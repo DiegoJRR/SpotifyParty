@@ -28,23 +28,26 @@ The idea of this app is to solve the problem of music playlists at parties (["Pa
 
 **Required Must-have Stories**
 
-1) Authentication (Log in / Log out / Sign up)
-2) Find local parties / events
-3) Add new songs to the playing playlist in a nearby event
-4) Scan QR to access the party's playlist
-5) ...
+1) Authentication 
+    - Log in, log out and sign up with parse
+    - Connect with Spotify Account 
+3) Find local parties / events
+    - View details and join 
+    - Scan QR to access the party's playlist
+5) Add new songs to the playing playlist in a nearby event
 
 **Optional Nice-to-have Stories**
 
 
 * Directly sharing songs from Spotify
 * Ranking and reordering of playlist
-* Limited permissions 
+* Limited permissions and several admins
 * Banning of explicit songs
 * Group volume control
 * Follow / save party's playlist on user's account
 * Push whole playlist to queue
-* ...
+* Share event with other social media apps
+* As host, remove users or make others admins
 
 ### 2. Screen Archetypes
 
@@ -84,9 +87,10 @@ The idea of this app is to solve the problem of music playlists at parties (["Pa
    * ... 
 
 ## Wireframes
+
  [Wireframe](https://imgur.com/a/mGH7KhW) for the app 
 
-<img src="https://i.imgur.com/5Ep57fs.png" width=''>
+<img src="https://i.imgur.com/kaWTLgW.png" width=''>
 
 ## Schema 
 
