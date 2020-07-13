@@ -84,15 +84,9 @@ The idea of this app is to solve the problem of music playlists at parties (["Pa
    * ... 
 
 ## Wireframes
-// TODO: Make a digital, complete version. Detailed. 
+ [Wireframe](https://imgur.com/a/mGH7KhW) for the app 
 
-Initial, basic, wireframe for the app 
-
-<img src="https://i.imgur.com/xAu2bL4.jpg" width=''>
-
-### [BONUS] Digital Wireframes & Mockups
-
-### [BONUS] Interactive Prototype
+<img src="https://i.imgur.com/5Ep57fs.png" width=''>
 
 ## Schema 
 
