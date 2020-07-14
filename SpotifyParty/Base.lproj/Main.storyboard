@@ -40,6 +40,9 @@
                                 <rect key="frame" x="188" y="422" width="38" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="Login"/>
+                                <connections>
+                                    <segue destination="ifl-Lt-GPi" kind="presentation" id="CdT-g1-z4T"/>
+                                </connections>
                             </button>
                             <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Username" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="B8B-PU-LDp">
                                 <rect key="frame" x="87" y="301" width="241" height="34"/>
@@ -75,10 +78,82 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="131.8840579710145" y="137.94642857142856"/>
+            <point key="canvasLocation" x="686" y="-378"/>
+        </scene>
+        <!--Event-->
+        <scene sceneID="l6g-oz-aqu">
+            <objects>
+                <viewController id="hW6-P3-5aW" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="w17-FI-aSu">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <viewLayoutGuide key="safeArea" id="C4y-wT-vPA"/>
+                    </view>
+                    <tabBarItem key="tabBarItem" title="Event" image="music.house" catalog="system" id="Hqi-Vc-YTv"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="HOa-M5-6bC" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="686" y="1071"/>
+        </scene>
+        <!--Settings-->
+        <scene sceneID="btg-fU-pMz">
+            <objects>
+                <viewController id="WkS-10-nY2" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="fN7-fA-D6q">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <viewLayoutGuide key="safeArea" id="vNl-j5-FDb"/>
+                    </view>
+                    <tabBarItem key="tabBarItem" title="Settings" image="pencil.circle" catalog="system" id="R8L-Zf-dAV"/>
+                    <navigationItem key="navigationItem" id="Ptz-jd-W4b"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="us3-4P-hcx" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1604" y="1071"/>
+        </scene>
+        <!--Find Events-->
+        <scene sceneID="FTy-pK-SkB">
+            <objects>
+                <viewController id="aZX-eP-FYB" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="MIF-h4-xkP">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <viewLayoutGuide key="safeArea" id="Q5h-kq-GwQ"/>
+                    </view>
+                    <tabBarItem key="tabBarItem" title="Find Events" image="location" catalog="system" id="CvG-BN-j5O"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="CeP-Ro-ls3" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-183" y="1071"/>
+        </scene>
+        <!--Tab Bar Controller-->
+        <scene sceneID="oH4-Vz-5qP">
+            <objects>
+                <tabBarController modalPresentationStyle="fullScreen" id="ifl-Lt-GPi" sceneMemberID="viewController">
+                    <navigationItem key="navigationItem" id="2Tl-ex-9VC"/>
+                    <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="VAK-yF-aOf">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="49"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    </tabBar>
+                    <connections>
+                        <segue destination="aZX-eP-FYB" kind="relationship" relationship="viewControllers" id="NOc-T5-PFv"/>
+                        <segue destination="hW6-P3-5aW" kind="relationship" relationship="viewControllers" id="C1u-d6-Sfl"/>
+                        <segue destination="WkS-10-nY2" kind="relationship" relationship="viewControllers" id="Zup-eC-MFt"/>
+                    </connections>
+                </tabBarController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="JQD-rt-yf3" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="686" y="348"/>
         </scene>
     </scenes>
     <resources>
+        <image name="location" catalog="system" width="128" height="115"/>
+        <image name="music.house" catalog="system" width="128" height="106"/>
+        <image name="pencil.circle" catalog="system" width="128" height="121"/>
         <image name="s.square.fill" catalog="system" width="128" height="114"/>
     </resources>
 </document>
