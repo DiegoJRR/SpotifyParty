@@ -2,7 +2,7 @@
 //  SpotifyPartyUITests.m
 //  SpotifyPartyUITests
 //
-//  Created by Diego de Jesus Ramirez on 14/07/20.
+//  Created by Diego de Jesus Ramirez on 13/07/20.
 //  Copyright © 2020 DiegoRamirez. All rights reserved.
 //
 

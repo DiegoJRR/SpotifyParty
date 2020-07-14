@@ -2,11 +2,19 @@
 //  AppDelegate.m
 //  SpotifyParty
 //
+<<<<<<< HEAD
 //  Created by Diego de Jesus Ramirez on 14/07/20.
+=======
+//  Created by Diego de Jesus Ramirez on 13/07/20.
+>>>>>>> a69bf0c7e3063e2193eb4f2a645aa6aedfa4b546
 //  Copyright © 2020 DiegoRamirez. All rights reserved.
 //
 
 #import "AppDelegate.h"
+<<<<<<< HEAD
+=======
+#import <Parse/Parse.h>
+>>>>>>> a69bf0c7e3063e2193eb4f2a645aa6aedfa4b546
 
 @interface AppDelegate ()
 
@@ -16,11 +24,24 @@
 
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
+<<<<<<< HEAD
     // Override point for customization after application launch.
     return YES;
 }
 
 
+=======
+    ParseClientConfiguration *config = [ParseClientConfiguration   configurationWithBlock:^(id<ParseMutableClientConfiguration> configuration) {
+        
+        configuration.applicationId = @"myAppId";
+        configuration.server = @"https://spotify-party-fbu.herokuapp.com/parse";
+    }];
+    
+    [Parse initializeWithConfiguration:config];
+    return YES;
+}
+
+>>>>>>> a69bf0c7e3063e2193eb4f2a645aa6aedfa4b546
 #pragma mark - UISceneSession lifecycle
 
 
