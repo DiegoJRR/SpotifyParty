@@ -3,14 +3,14 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 51;
 	objects = {
 
 /* Begin PBXBuildFile section */
 		10DAD584BCC8CFFD1655044D /* Pods_SpotifyParty.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4AA7ED302F86CE5E246E0B4F /* Pods_SpotifyParty.framework */; };
+		2F1D584424BE81A40035283A /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F1D584324BE81A40035283A /* LoginViewController.m */; };
 		2F52815C24BE2C4D00A52A95 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F52815B24BE2C4D00A52A95 /* AppDelegate.m */; };
 		2F52815F24BE2C4D00A52A95 /* SceneDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F52815E24BE2C4D00A52A95 /* SceneDelegate.m */; };
-		2F52816224BE2C4D00A52A95 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F52816124BE2C4D00A52A95 /* ViewController.m */; };
 		2F52816524BE2C4D00A52A95 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2F52816324BE2C4D00A52A95 /* Main.storyboard */; };
 		2F52816724BE2C4E00A52A95 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2F52816624BE2C4E00A52A95 /* Assets.xcassets */; };
 		2F52816A24BE2C4E00A52A95 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2F52816824BE2C4E00A52A95 /* LaunchScreen.storyboard */; };
@@ -41,13 +41,13 @@
 /* Begin PBXFileReference section */
 		28D92334B4D60C9F05FF1723 /* Pods-SpotifyParty-SpotifyPartyUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SpotifyParty-SpotifyPartyUITests.debug.xcconfig"; path = "Target Support Files/Pods-SpotifyParty-SpotifyPartyUITests/Pods-SpotifyParty-SpotifyPartyUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		2E0DBB422C8DD9DB248F673F /* Pods-SpotifyParty-SpotifyPartyUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SpotifyParty-SpotifyPartyUITests.release.xcconfig"; path = "Target Support Files/Pods-SpotifyParty-SpotifyPartyUITests/Pods-SpotifyParty-SpotifyPartyUITests.release.xcconfig"; sourceTree = "<group>"; };
+		2F1D584224BE81A40035283A /* LoginViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LoginViewController.h; sourceTree = "<group>"; };
+		2F1D584324BE81A40035283A /* LoginViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LoginViewController.m; sourceTree = "<group>"; };
 		2F52815724BE2C4D00A52A95 /* SpotifyParty.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SpotifyParty.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		2F52815A24BE2C4D00A52A95 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		2F52815B24BE2C4D00A52A95 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
 		2F52815D24BE2C4D00A52A95 /* SceneDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SceneDelegate.h; sourceTree = "<group>"; };
 		2F52815E24BE2C4D00A52A95 /* SceneDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SceneDelegate.m; sourceTree = "<group>"; };
-		2F52816024BE2C4D00A52A95 /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
-		2F52816124BE2C4D00A52A95 /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
 		2F52816424BE2C4D00A52A95 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		2F52816624BE2C4E00A52A95 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		2F52816924BE2C4E00A52A95 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -96,6 +96,29 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		2F1D583E24BE801B0035283A /* Models */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		2F1D583F24BE80230035283A /* Views */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		2F1D584124BE80350035283A /* View Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				2F1D584224BE81A40035283A /* LoginViewController.h */,
+				2F1D584324BE81A40035283A /* LoginViewController.m */,
+			);
+			path = "View Controllers";
+			sourceTree = "<group>";
+		};
 		2F52814E24BE2C4D00A52A95 = {
 			isa = PBXGroup;
 			children = (
@@ -121,12 +144,13 @@
 		2F52815924BE2C4D00A52A95 /* SpotifyParty */ = {
 			isa = PBXGroup;
 			children = (
+				2F1D584124BE80350035283A /* View Controllers */,
+				2F1D583F24BE80230035283A /* Views */,
+				2F1D583E24BE801B0035283A /* Models */,
 				2F52815A24BE2C4D00A52A95 /* AppDelegate.h */,
 				2F52815B24BE2C4D00A52A95 /* AppDelegate.m */,
 				2F52815D24BE2C4D00A52A95 /* SceneDelegate.h */,
 				2F52815E24BE2C4D00A52A95 /* SceneDelegate.m */,
-				2F52816024BE2C4D00A52A95 /* ViewController.h */,
-				2F52816124BE2C4D00A52A95 /* ViewController.m */,
 				2F52816324BE2C4D00A52A95 /* Main.storyboard */,
 				2F52816624BE2C4E00A52A95 /* Assets.xcassets */,
 				2F52816824BE2C4E00A52A95 /* LaunchScreen.storyboard */,
@@ -164,7 +188,6 @@
 				4E8CE222EA9D9EC2194C923C /* Pods-SpotifyPartyTests.debug.xcconfig */,
 				F534E77D296C476E1A089E88 /* Pods-SpotifyPartyTests.release.xcconfig */,
 			);
-			name = Pods;
 			path = Pods;
 			sourceTree = "<group>";
 		};
@@ -416,7 +439,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				2F52816224BE2C4D00A52A95 /* ViewController.m in Sources */,
+				2F1D584424BE81A40035283A /* LoginViewController.m in Sources */,
 				2F52815C24BE2C4D00A52A95 /* AppDelegate.m in Sources */,
 				2F52816D24BE2C4E00A52A95 /* main.m in Sources */,
 				2F52815F24BE2C4D00A52A95 /* SceneDelegate.m in Sources */,
