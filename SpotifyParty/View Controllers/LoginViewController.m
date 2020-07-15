@@ -60,7 +60,7 @@
 
 - (IBAction)signUpPressed:(id)sender {
     
-    if (self.usernameLabel.hasText && self.passwordLabel) {
+    if (self.usernameLabel.hasText && self.passwordLabel.hasText) {
         // initialize a user object
         PFUser *newUser = [PFUser user];
         
