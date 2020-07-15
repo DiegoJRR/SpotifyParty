@@ -50,13 +50,11 @@
             }
         }];
     } else {
-           [self presentAlert:@"Missing information" message: @"Missing username/password. Please add them and try again."];
-           
+        [self presentAlert:@"Missing information" message: @"Missing username/password. Please add them and try again."];
     }
 }
 
 - (IBAction)signUpPressed:(id)sender {
-    
     if (self.usernameLabel.hasText && self.passwordLabel.hasText) {
         // initialize a user object
         PFUser *newUser = [PFUser user];

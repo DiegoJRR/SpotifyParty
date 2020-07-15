@@ -6,6 +6,20 @@
 	objectVersion = 51;
 	objects = {
 
+/* Begin PBXAggregateTarget section */
+		2F5F795224BF413B0076D66B /* OCLint */ = {
+			isa = PBXAggregateTarget;
+			buildConfigurationList = 2F5F795324BF413B0076D66B /* Build configuration list for PBXAggregateTarget "OCLint" */;
+			buildPhases = (
+				2F5F795624BF41490076D66B /* ShellScript */,
+			);
+			dependencies = (
+			);
+			name = OCLint;
+			productName = OCLint;
+		};
+/* End PBXAggregateTarget section */
+
 /* Begin PBXBuildFile section */
 		10DAD584BCC8CFFD1655044D /* Pods_SpotifyParty.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4AA7ED302F86CE5E246E0B4F /* Pods_SpotifyParty.framework */; };
 		2F1D584424BE81A40035283A /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F1D584324BE81A40035283A /* LoginViewController.m */; };
@@ -59,6 +73,7 @@
 		2F52817D24BE2C4F00A52A95 /* SpotifyPartyUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SpotifyPartyUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		2F52818124BE2C4F00A52A95 /* SpotifyPartyUITests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SpotifyPartyUITests.m; sourceTree = "<group>"; };
 		2F52818324BE2C4F00A52A95 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		2F5F795124BF40F60076D66B /* SpotifyParty copy-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = "SpotifyParty copy-Info.plist"; path = "/Users/diegojrr/Desktop/CodePath iOS Training/Personal Project/SpotifyParty/SpotifyParty copy-Info.plist"; sourceTree = "<absolute>"; };
 		3E5562773B6C0EFEE8FD6B16 /* Pods-SpotifyParty.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SpotifyParty.release.xcconfig"; path = "Target Support Files/Pods-SpotifyParty/Pods-SpotifyParty.release.xcconfig"; sourceTree = "<group>"; };
 		4AA7ED302F86CE5E246E0B4F /* Pods_SpotifyParty.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SpotifyParty.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		4E8CE222EA9D9EC2194C923C /* Pods-SpotifyPartyTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SpotifyPartyTests.debug.xcconfig"; path = "Target Support Files/Pods-SpotifyPartyTests/Pods-SpotifyPartyTests.debug.xcconfig"; sourceTree = "<group>"; };
@@ -128,6 +143,7 @@
 				2F52815824BE2C4D00A52A95 /* Products */,
 				744296B3574F02E29C0C4094 /* Pods */,
 				A20342D636B225F7EE7647FB /* Frameworks */,
+				2F5F795124BF40F60076D66B /* SpotifyParty copy-Info.plist */,
 			);
 			sourceTree = "<group>";
 		};
@@ -282,6 +298,9 @@
 						CreatedOnToolsVersion = 11.5;
 						TestTargetID = 2F52815624BE2C4D00A52A95;
 					};
+					2F5F795224BF413B0076D66B = {
+						CreatedOnToolsVersion = 11.5;
+					};
 				};
 			};
 			buildConfigurationList = 2F52815224BE2C4D00A52A95 /* Build configuration list for PBXProject "SpotifyParty" */;
@@ -300,6 +319,7 @@
 				2F52815624BE2C4D00A52A95 /* SpotifyParty */,
 				2F52817124BE2C4F00A52A95 /* SpotifyPartyTests */,
 				2F52817C24BE2C4F00A52A95 /* SpotifyPartyUITests */,
+				2F5F795224BF413B0076D66B /* OCLint */,
 			);
 		};
 /* End PBXProject section */
@@ -353,6 +373,23 @@
 			shellPath = /bin/sh;
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
+		};
+		2F5F795624BF41490076D66B /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "# Type a script or drag a script file from your workspace to insert its path.\nsource ~/.bash_profile\ncd ${SRCROOT}\nxcodebuild clean\nxcodebuild -workspace SpotifyParty.xcworkspace -scheme SpotifyParty | tee xcodebuild.log | xcpretty -r json-compilation-database -o compile_commands.json\noclint-json-compilation-database -report-type html  -- -v -e Pods oclint_args \\\n\"-max-priority-1=$maxPriority -max-priority-2=$maxPriority \\\n-max-priority-3=$maxPriority -rc LONG_LINE=500 \\\n-rc LONG_VARIABLE_NAME=100  -disable-rule=UnusedMethodParameter\" \\\n| sed 's/\\(.*\\.\\m\\{1,2\\}:[0-9]*:[0-9]*:\\)/\\1 warning:/'  \n";
 		};
 		5749C8DF91259D07BC9B74AC /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
@@ -723,6 +760,24 @@
 			};
 			name = Release;
 		};
+		2F5F795424BF413B0076D66B /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = HJJJ25GZT2;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		2F5F795524BF413B0076D66B /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = HJJJ25GZT2;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -758,6 +813,15 @@
 			buildConfigurations = (
 				2F52818D24BE2C4F00A52A95 /* Debug */,
 				2F52818E24BE2C4F00A52A95 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		2F5F795324BF413B0076D66B /* Build configuration list for PBXAggregateTarget "OCLint" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				2F5F795424BF413B0076D66B /* Debug */,
+				2F5F795524BF413B0076D66B /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
