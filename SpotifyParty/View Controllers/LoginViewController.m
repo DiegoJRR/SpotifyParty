@@ -20,14 +20,11 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view.
 }
 
 - (void)presentAlert:(NSString *)title message:(NSString *)message_body {
     UIAlertController *alert = [UIAlertController alertControllerWithTitle:title message: message_body preferredStyle:UIAlertControllerStyleAlert];
-    UIAlertAction *okAction = [UIAlertAction actionWithTitle:@"Ok" style:UIAlertActionStyleDefault handler:^(UIAlertAction * action){
-        // Ok action example
-    }];
+    UIAlertAction *okAction = [UIAlertAction actionWithTitle:@"Ok" style:UIAlertActionStyleDefault handler:^(UIAlertAction * action){}];
     [alert addAction:okAction];
     [self presentViewController:alert animated:YES completion:nil];
 }
@@ -79,24 +76,11 @@
                 
                 // manually segue to logged in view
                 [self performSegueWithIdentifier:@"mainTabBarSegue" sender:nil];
-                
             }
         }];
     } else {
         [self presentAlert:@"Missing information" message: @"Missing username/password. Please add them and try again."];
-        
     }
-
 }
-
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
-*/
 
 @end
