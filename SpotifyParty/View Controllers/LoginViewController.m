@@ -23,6 +23,15 @@
     // Do any additional setup after loading the view.
 }
 
+- (void)presentAlert:(NSString *)title message:(NSString *)message_body {
+    UIAlertController *alert = [UIAlertController alertControllerWithTitle:title message: message_body preferredStyle:UIAlertControllerStyleAlert];
+    UIAlertAction *okAction = [UIAlertAction actionWithTitle:@"Ok" style:UIAlertActionStyleDefault handler:^(UIAlertAction * action){
+        // Ok action example
+    }];
+    [alert addAction:okAction];
+    [self presentViewController:alert animated:YES completion:nil];
+}
+
 - (IBAction)loginActionPressed:(id)sender {
     if (self.usernameLabel.hasText && self.passwordLabel.hasText) {
         
@@ -35,7 +44,7 @@
             if (error != nil) {
                 NSLog(@"User log in failed: %@", error.localizedDescription);
                 
-//                [self presentAlert:@"Error" message: error.localizedDescription];
+                [self presentAlert:@"Error" message: error.localizedDescription];
             } else {
                 NSLog(@"User logged in successfully");
                 
@@ -44,7 +53,8 @@
             }
         }];
     } else {
-        NSLog(@"Missing information for Sign Up");
+           [self presentAlert:@"Missing information" message: @"Missing username/password. Please add them and try again."];
+           
     }
 }
 
@@ -62,6 +72,8 @@
         [newUser signUpInBackgroundWithBlock:^(BOOL succeeded, NSError * error) {
             if (error != nil) {
                 NSLog(@"Error: %@", error.localizedDescription);
+                
+                [self presentAlert:@"Error" message: error.localizedDescription];
             } else {
                 NSLog(@"User registered successfully");
                 
@@ -70,6 +82,9 @@
                 
             }
         }];
+    } else {
+        [self presentAlert:@"Missing information" message: @"Missing username/password. Please add them and try again."];
+        
     }
 
 }

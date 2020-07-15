@@ -77,7 +77,6 @@
                                 <state key="normal" title="sign up"/>
                                 <connections>
                                     <action selector="signUpPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="xTY-Pa-GBi"/>
-                                    <segue destination="ifl-Lt-GPi" kind="show" identifier="mainTabBarSegue" id="WKr-eq-eqX"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -87,11 +86,12 @@
                     <connections>
                         <outlet property="passwordLabel" destination="F61-tA-ael" id="cEY-XD-PGm"/>
                         <outlet property="usernameLabel" destination="B8B-PU-LDp" id="Y6U-LN-FhW"/>
+                        <segue destination="ifl-Lt-GPi" kind="show" identifier="mainTabBarSegue" id="uRk-85-mhG"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="686" y="-471"/>
+            <point key="canvasLocation" x="686" y="-475"/>
         </scene>
         <!--Event Name-->
         <scene sceneID="l6g-oz-aqu">
