@@ -8,7 +8,6 @@
 
 #import "LoginViewController.h"
 #import <Parse/Parse.h>
-#import "SpotifySDKManager.h"
 
 @interface LoginViewController ()
 
@@ -22,20 +21,6 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    
-}
-
-- (IBAction)spotifyTapped:(id)sender {
-    SpotifySDKManager *sdkManager = [SpotifySDKManager alloc];
-    // Check if spotify is active and authorized
-    [SPTAppRemote checkIfSpotifyAppIsActive:^(BOOL active) {
-        if (active) {
-            [self performSegueWithIdentifier:@"mainTabBarSegue" sender:nil];
-        } else {
-            [sdkManager loginSpotify];
-
-        }
-    }];
 }
 
 - (void)presentAlert:(NSString *)title message:(NSString *)message_body {

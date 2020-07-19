@@ -9,12 +9,16 @@
 #import "AppDelegate.h"
 #import <Parse/Parse.h>
 
-@interface AppDelegate ()
+static NSString * const spotifyClientID = @"34a573be80d04976888bced902186479";
+static NSString * const spotifyRedirectURLString = @"spotify-party-login://callback";
+static NSString * const tokenSwapURLString = @"https://spotify-party-token.herokuapp.com/api/token";
+static NSString * const tokenRefreshURLString = @"https://spotify-party-token.herokuapp.com/api/refresh_token";
+
+@interface AppDelegate ()<SPTSessionManagerDelegate, SPTAppRemoteDelegate, SPTAppRemotePlayerStateDelegate>
 
 @end
 
 @implementation AppDelegate
-
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     
@@ -25,7 +29,36 @@
     }];
     
     [Parse initializeWithConfiguration:config];
+    
+    [self initialConfiguration];
+    [self authenticateSession];
+    NSLog(@"Done");
+
     return YES;
+}
+-(void)initialConfiguration{
+    /*
+     Handles the initial configuration for the Spotify session manager and token swapping
+     */
+    self.configuration =[[SPTConfiguration alloc]initWithClientID:spotifyClientID redirectURL:[NSURL URLWithString:spotifyRedirectURLString]];
+    self.configuration.tokenSwapURL = [NSURL URLWithString:tokenSwapURLString];
+    self.configuration.tokenRefreshURL = [NSURL URLWithString:tokenRefreshURLString];
+    
+    self.configuration.playURI = @"";
+    self.appRemote = [[SPTAppRemote alloc] initWithConfiguration:self.configuration logLevel:SPTAppRemoteLogLevelDebug];
+    self.appRemote.delegate = self;
+}
+
+-(void)authenticateSession{
+    // Authenticates a session, and open the Spotify app if available
+    SPTScope requestedscopes = SPTAppRemoteControlScope;
+    self.sessionManager = [SPTSessionManager sessionManagerWithConfiguration:self.configuration delegate:self];
+    [self.sessionManager initiateSessionWithScope:requestedscopes options:SPTDefaultAuthorizationOption];
+}
+
+-(BOOL)application:(UIApplication *)app openURL:(NSURL *)url options:(NSDictionary<NSString *,id> *)options{
+    NSLog(@"Called");
+    return [self.sessionManager application:app openURL:url options:options];
 }
 
 #pragma mark - UISceneSession lifecycle
@@ -35,6 +68,62 @@
     // Called when a new scene session is being created.
     // Use this method to select a configuration to create the new scene with.
     return [[UISceneConfiguration alloc] initWithName:@"Default Configuration" sessionRole:connectingSceneSession.role];
+}
+
+-(void)applicationWillResignActive:(UIApplication *)application{
+    if(self.appRemote.isConnected){
+        [self.appRemote disconnect];
+        NSLog(@"DISCONNECTED");
+    }
+}
+
+-(void)applicationDidBecomeActive:(UIApplication *)application{
+    if(self.appRemote.connectionParameters.accessToken){
+        [self.appRemote connect];
+         NSLog(@"Connected");
+    }
+}
+
+#pragma mark - SPTSessionManagerDelegate
+-(void)sessionManager:(SPTSessionManager *)manager didRenewSession:(SPTSession *)session{
+    NSLog(@"Renewed: %@", session);
+}
+
+-(void)sessionManager:(SPTSessionManager *)manager didInitiateSession:(SPTSession *)session{
+    NSLog(@"Success: %@", session);
+    self.appRemote.connectionParameters.accessToken = session.accessToken;
+}
+
+-(void)sessionManager:(SPTSessionManager *)manager didFailWithError:(NSError *)error{
+    NSLog(@"Error: %@", error);
+}
+#pragma mark - SPTAppRemoteDelegate
+
+- (void)appRemoteDidEstablishConnection:(SPTAppRemote *)appRemote{
+    NSLog(@"Trying to connect");
+    
+    self.appRemote.playerAPI.delegate = self;
+    [self.appRemote.playerAPI subscribeToPlayerState:^(id  _Nullable result, NSError * _Nullable error) {
+        if(error) {
+            NSLog(@"Error with connection%@",error.localizedDescription);
+        } else{
+            NSLog(@"Success");
+        }
+    }];
+}
+
+
+- (void)appRemote:(SPTAppRemote *)appRemote didFailConnectionAttemptWithError:(nullable NSError *)error{
+    NSLog(@"Error connecting to Spotify app %@",error);
+}
+
+- (void)appRemote:(nonnull SPTAppRemote *)appRemote didDisconnectWithError:(nullable NSError *)error {
+    NSLog(@"disconnected");
+}
+
+
+-(void)playerStateDidChange:(id<SPTAppRemotePlayerState>)playerState{
+    NSLog(@"Track name: %@" , playerState.track.name);
 }
 
 @end
