@@ -8,11 +8,13 @@
 
 #import "LoginViewController.h"
 #import <Parse/Parse.h>
+#import "AppDelegate.h"
 
 @interface LoginViewController ()
 
 @property (weak, nonatomic) IBOutlet UITextField *usernameLabel;
 @property (weak, nonatomic) IBOutlet UITextField *passwordLabel;
+@property (strong, nonatomic) AppDelegate *delegate;
 
 @end
 
@@ -20,6 +22,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
 }
 
 - (void)presentAlert:(NSString *)title message:(NSString *)message_body {
@@ -80,5 +83,6 @@
         [self presentAlert:@"Missing information" message: @"Missing username/password. Please add them and try again."];
     }
 }
+
 
 @end
