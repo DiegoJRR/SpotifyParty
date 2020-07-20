@@ -8,11 +8,13 @@
 
 #import "LoginViewController.h"
 #import <Parse/Parse.h>
+#import "AppDelegate.h"
 
 @interface LoginViewController ()
 
 @property (weak, nonatomic) IBOutlet UITextField *usernameLabel;
 @property (weak, nonatomic) IBOutlet UITextField *passwordLabel;
+@property (strong, nonatomic) AppDelegate *delegate;
 
 @end
 

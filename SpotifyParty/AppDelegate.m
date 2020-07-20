@@ -9,10 +9,13 @@
 #import "AppDelegate.h"
 #import <Parse/Parse.h>
 
+// Credentials for the Spotify developer application
 static NSString * const spotifyClientID = @"34a573be80d04976888bced902186479";
-static NSString * const spotifyRedirectURLString = @"spotify-party-login://callback";
-static NSString * const tokenSwapURLString = @"https://spotify-party-token.herokuapp.com/api/token";
-static NSString * const tokenRefreshURLString = @"https://spotify-party-token.herokuapp.com/api/refresh_token";
+static NSString * const spotifyRedirectURLString = @"spotify-party-app-login://callback";
+
+// URLs for the token swap heroku server
+static NSString * const tokenSwapURLString = @"https://spotify-swap-tokens.herokuapp.com/api/token";
+static NSString * const tokenRefreshURLString = @"https://spotify-swap-tokens.herokuapp.com/api/refresh_token";
 
 @interface AppDelegate ()<SPTSessionManagerDelegate, SPTAppRemoteDelegate, SPTAppRemotePlayerStateDelegate>
 
@@ -22,8 +25,7 @@ static NSString * const tokenRefreshURLString = @"https://spotify-party-token.he
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     
-    ParseClientConfiguration *config = [ParseClientConfiguration   configurationWithBlock:^(id<ParseMutableClientConfiguration> configuration) {
-        
+    ParseClientConfiguration *config = [ParseClientConfiguration configurationWithBlock:^(id<ParseMutableClientConfiguration> configuration) {
         configuration.applicationId = @"myAppId";
         configuration.server = @"https://spotify-party-fbu.herokuapp.com/parse";
     }];
@@ -32,7 +34,6 @@ static NSString * const tokenRefreshURLString = @"https://spotify-party-token.he
     
     [self initialConfiguration];
     [self authenticateSession];
-    NSLog(@"Done");
 
     return YES;
 }
@@ -52,13 +53,15 @@ static NSString * const tokenRefreshURLString = @"https://spotify-party-token.he
 -(void)authenticateSession{
     // Authenticates a session, and open the Spotify app if available
     SPTScope requestedscopes = SPTAppRemoteControlScope;
+    
     self.sessionManager = [SPTSessionManager sessionManagerWithConfiguration:self.configuration delegate:self];
     [self.sessionManager initiateSessionWithScope:requestedscopes options:SPTDefaultAuthorizationOption];
 }
 
 -(BOOL)application:(UIApplication *)app openURL:(NSURL *)url options:(NSDictionary<NSString *,id> *)options{
     NSLog(@"Called");
-    return [self.sessionManager application:app openURL:url options:options];
+    [self.sessionManager application:app openURL:url options:options];
+    return true;
 }
 
 #pragma mark - UISceneSession lifecycle
@@ -73,7 +76,7 @@ static NSString * const tokenRefreshURLString = @"https://spotify-party-token.he
 -(void)applicationWillResignActive:(UIApplication *)application{
     if(self.appRemote.isConnected){
         [self.appRemote disconnect];
-        NSLog(@"DISCONNECTED");
+        NSLog(@"Disconnected");
     }
 }
 
@@ -118,7 +121,7 @@ static NSString * const tokenRefreshURLString = @"https://spotify-party-token.he
 }
 
 - (void)appRemote:(nonnull SPTAppRemote *)appRemote didDisconnectWithError:(nullable NSError *)error {
-    NSLog(@"disconnected");
+    NSLog(@"Disconnected");
 }
 
 
