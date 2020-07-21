@@ -35,10 +35,6 @@
     UIOpenURLContext *ctx = [URLContexts allObjects][0];
     NSLog(@"%@", self.delegate.sessionManager.session.accessToken);
     [self.delegate application:[UIApplication sharedApplication] openURL:ctx.URL options:ctx.options];
-    
-    
-    
-    
 }
 
 @end
