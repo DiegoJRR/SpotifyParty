@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16097" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16097.2" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
@@ -63,7 +63,11 @@
                             </button>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <gestureRecognizers/>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
+                        <connections>
+                            <outletCollection property="gestureRecognizers" destination="u7F-ht-kqq" appends="YES" id="sNb-9c-oDN"/>
+                        </connections>
                     </view>
                     <connections>
                         <outlet property="passwordLabel" destination="F61-tA-ael" id="cEY-XD-PGm"/>
@@ -72,6 +76,11 @@
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
+                <tapGestureRecognizer id="u7F-ht-kqq">
+                    <connections>
+                        <action selector="viewTapped:" destination="BYZ-38-t0r" id="EYJ-BX-OBX"/>
+                    </connections>
+                </tapGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="686" y="-475"/>
         </scene>
@@ -239,7 +248,7 @@
         <!--New Event-->
         <scene sceneID="rNe-lh-MsW">
             <objects>
-                <viewController id="y8y-YB-tZC" sceneMemberID="viewController">
+                <viewController id="y8y-YB-tZC" customClass="NewEventViewController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8UX-XJ-nbe">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -272,11 +281,6 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gkk-yV-K7C">
-                                <rect key="frame" x="184" y="721" width="46" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Create"/>
-                            </button>
                             <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Event name" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="kox-mv-mAI">
                                 <rect key="frame" x="254" y="146" width="131" height="34"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -293,13 +297,35 @@
                                 <rect key="frame" x="336" y="345" width="49" height="31"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </switch>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gkk-yV-K7C">
+                                <rect key="frame" x="184" y="404" width="46" height="56"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Create"/>
+                                <connections>
+                                    <action selector="createEventPressed:" destination="y8y-YB-tZC" eventType="touchUpInside" id="qpN-1p-WJv"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <gestureRecognizers/>
                         <viewLayoutGuide key="safeArea" id="8aN-lM-gjI"/>
+                        <connections>
+                            <outletCollection property="gestureRecognizers" destination="Vrh-yR-KyN" appends="YES" id="78q-hc-AbD"/>
+                        </connections>
                     </view>
                     <navigationItem key="navigationItem" title="New Event" id="Wbi-vm-Pbd"/>
+                    <connections>
+                        <outlet property="banExplicitToggle" destination="2pU-Pu-elN" id="aMZ-WX-IaH"/>
+                        <outlet property="eventNameField" destination="kox-mv-mAI" id="z1N-Iu-21b"/>
+                        <outlet property="playlistNameField" destination="b6Z-4Z-Ffn" id="20F-QQ-ZLN"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="n6h-SQ-cNB" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+                <tapGestureRecognizer id="Vrh-yR-KyN">
+                    <connections>
+                        <action selector="viewPressed:" destination="y8y-YB-tZC" id="lKc-Y6-ONX"/>
+                    </connections>
+                </tapGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="-184.05797101449278" y="2471.6517857142858"/>
         </scene>

@@ -83,6 +83,9 @@
         [self presentAlert:@"Missing information" message: @"Missing username/password. Please add them and try again."];
     }
 }
+- (IBAction)viewTapped:(id)sender {
+    [self.view endEditing:YES];
+}
 
 
 @end
