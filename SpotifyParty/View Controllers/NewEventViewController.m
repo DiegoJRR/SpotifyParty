@@ -9,11 +9,14 @@
 #import "NewEventViewController.h"
 #import "Event.h"
 
-@interface NewEventViewController ()
+@interface NewEventViewController () <UIPickerViewDataSource, UIPickerViewDelegate>
 
 @property (weak, nonatomic) IBOutlet UITextField *eventNameField;
 @property (weak, nonatomic) IBOutlet UITextField *playlistNameField;
-@property (weak, nonatomic) IBOutlet UISwitch *banExplicitToggle;
+@property (weak, nonatomic) IBOutlet UISwitch *allowExplicitToggle;
+@property (weak, nonatomic) IBOutlet UIPickerView *playlistPicker;
+
+@property (nonatomic, strong) NSArray *playlists;
 
 @end
 
@@ -22,23 +25,43 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
+    
+    self.playlists = @[@"Rock Playlist", @"Hip Hop Playlist", @"My epic playlist", @"Another Option"];
+    
+    self.playlistPicker.dataSource = self;
+    self.playlistPicker.delegate = self;
 }
 
 - (IBAction)createEventPressed:(id)sender {
-    [Event postEvent:self.playlistNameField.text withName:self.eventNameField.text withCompletion:^(BOOL succeeded, NSError * _Nullable error) {
-    // Code to exectute when posted successfully
-    if (!error) {
-        NSLog(@"Event Posted");
-        [self dismissViewControllerAnimated:YES completion:nil];
-        
-    } else {
-        NSLog(@"%@", error.localizedDescription);
-        }
+    NSString *playlist;
+    playlist = [self.playlists objectAtIndex:[self.playlistPicker selectedRowInComponent:0]];
+    
+    [Event postEvent:self.playlistNameField.text withName:self.eventNameField.text withExplicit: @(self.allowExplicitToggle.on ? 1 : 0) withCompletion:^(BOOL succeeded, NSError * _Nullable error) {
+        // Code to exectute when posted successfully
+        if (!error) {
+            NSLog(@"Event Posted");
+            [self dismissViewControllerAnimated:YES completion:nil];
+            
+        } else {
+            NSLog(@"%@", error.localizedDescription);
+            }
     }];
 }
 
 - (IBAction)viewPressed:(id)sender {
     [self.view endEditing:YES];
+}
+
+- (NSInteger)numberOfComponentsInPickerView:(nonnull UIPickerView *)pickerView {
+    return 1;
+}
+
+- (NSInteger)pickerView:(nonnull UIPickerView *)pickerView numberOfRowsInComponent:(NSInteger)component {
+    return self.playlists.count;
+}
+
+- (NSString *)pickerView:(UIPickerView *)pickerView titleForRow:(NSInteger)row forComponent:(NSInteger)component {
+    return self.playlists[row];
 }
 
 @end
