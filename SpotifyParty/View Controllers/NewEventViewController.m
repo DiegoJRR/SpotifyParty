@@ -12,9 +12,9 @@
 @interface NewEventViewController () <UIPickerViewDataSource, UIPickerViewDelegate>
 
 @property (weak, nonatomic) IBOutlet UITextField *eventNameField;
-@property (weak, nonatomic) IBOutlet UITextField *playlistNameField;
 @property (weak, nonatomic) IBOutlet UISwitch *allowExplicitToggle;
 @property (weak, nonatomic) IBOutlet UIPickerView *playlistPicker;
+@property (weak, nonatomic) IBOutlet UITextView *eventDescriptionField;
 
 @property (nonatomic, strong) NSArray *playlists;
 
@@ -24,8 +24,6 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view.
-    
     self.playlists = @[@"Rock Playlist", @"Hip Hop Playlist", @"My epic playlist", @"Another Option"];
     
     self.playlistPicker.dataSource = self;
@@ -36,16 +34,18 @@
     NSString *playlist;
     playlist = [self.playlists objectAtIndex:[self.playlistPicker selectedRowInComponent:0]];
     
-    [Event postEvent:self.playlistNameField.text withName:self.eventNameField.text withExplicit: @(self.allowExplicitToggle.on ? 1 : 0) withCompletion:^(BOOL succeeded, NSError * _Nullable error) {
-        // Code to exectute when posted successfully
-        if (!error) {
-            NSLog(@"Event Posted");
-            [self dismissViewControllerAnimated:YES completion:nil];
-            
-        } else {
-            NSLog(@"%@", error.localizedDescription);
-            }
-    }];
+    if (self.eventDescriptionField.hasText && self.eventNameField.hasText) {
+        [Event postEvent:self.eventDescriptionField.text withName:self.eventNameField.text withExplicit: @(self.allowExplicitToggle.on ? 1 : 0) withCompletion:^(BOOL succeeded, NSError * _Nullable error) {
+            // Code to exectute when posted successfully
+            if (!error) {
+                NSLog(@"Event Posted");
+                [self dismissViewControllerAnimated:YES completion:nil];
+                
+            } else {
+                NSLog(@"%@", error.localizedDescription);
+                }
+        }];
+    }
 }
 
 - (IBAction)viewPressed:(id)sender {
