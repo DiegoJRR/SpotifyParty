@@ -38,14 +38,11 @@ static NSString * const tokenRefreshURLString = @"https://spotify-swap-tokens.he
     return YES;
 }
 -(void)initialConfiguration{
-    /*
-     Handles the initial configuration for the Spotify session manager and token swapping
-     */
+    // Handles the initial configuration for the Spotify session manager and token swapping
     self.configuration =[[SPTConfiguration alloc]initWithClientID:spotifyClientID redirectURL:[NSURL URLWithString:spotifyRedirectURLString]];
     self.configuration.tokenSwapURL = [NSURL URLWithString:tokenSwapURLString];
     self.configuration.tokenRefreshURL = [NSURL URLWithString:tokenRefreshURLString];
     
-    self.configuration.playURI = @"";
     self.appRemote = [[SPTAppRemote alloc] initWithConfiguration:self.configuration logLevel:SPTAppRemoteLogLevelDebug];
     self.appRemote.delegate = self;
 }
@@ -65,7 +62,6 @@ static NSString * const tokenRefreshURLString = @"https://spotify-swap-tokens.he
 }
 
 #pragma mark - UISceneSession lifecycle
-
 
 - (UISceneConfiguration *)application:(UIApplication *)application configurationForConnectingSceneSession:(UISceneSession *)connectingSceneSession options:(UISceneConnectionOptions *)options {
     // Called when a new scene session is being created.
@@ -114,7 +110,6 @@ static NSString * const tokenRefreshURLString = @"https://spotify-swap-tokens.he
         }
     }];
 }
-
 
 - (void)appRemote:(SPTAppRemote *)appRemote didFailConnectionAttemptWithError:(nullable NSError *)error{
     NSLog(@"Error connecting to Spotify app %@",error);
