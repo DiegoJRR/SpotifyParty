@@ -25,6 +25,8 @@
 		2F1015F324C6072B00F1C78F /* NewEventViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F1015F224C6072B00F1C78F /* NewEventViewController.m */; };
 		2F1015F924C76F0E00F1C78F /* User.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F1015F824C76F0E00F1C78F /* User.m */; };
 		2F1015FC24C77A1300F1C78F /* Event.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F1015FB24C77A1300F1C78F /* Event.m */; };
+		2F1015FF24C7C55400F1C78F /* FindEventsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F1015FE24C7C55400F1C78F /* FindEventsViewController.m */; };
+		2F10160224C7C6F300F1C78F /* EventTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F10160124C7C6F300F1C78F /* EventTableViewCell.m */; };
 		2F1D584424BE81A40035283A /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F1D584324BE81A40035283A /* LoginViewController.m */; };
 		2F52815C24BE2C4D00A52A95 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F52815B24BE2C4D00A52A95 /* AppDelegate.m */; };
 		2F52815F24BE2C4D00A52A95 /* SceneDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F52815E24BE2C4D00A52A95 /* SceneDelegate.m */; };
@@ -65,6 +67,10 @@
 		2F1015F824C76F0E00F1C78F /* User.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = User.m; sourceTree = "<group>"; };
 		2F1015FA24C77A1300F1C78F /* Event.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Event.h; sourceTree = "<group>"; };
 		2F1015FB24C77A1300F1C78F /* Event.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Event.m; sourceTree = "<group>"; };
+		2F1015FD24C7C55400F1C78F /* FindEventsViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FindEventsViewController.h; sourceTree = "<group>"; };
+		2F1015FE24C7C55400F1C78F /* FindEventsViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FindEventsViewController.m; sourceTree = "<group>"; };
+		2F10160024C7C6F300F1C78F /* EventTableViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = EventTableViewCell.h; sourceTree = "<group>"; };
+		2F10160124C7C6F300F1C78F /* EventTableViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = EventTableViewCell.m; sourceTree = "<group>"; };
 		2F1D584224BE81A40035283A /* LoginViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LoginViewController.h; sourceTree = "<group>"; };
 		2F1D584324BE81A40035283A /* LoginViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LoginViewController.m; sourceTree = "<group>"; };
 		2F52815724BE2C4D00A52A95 /* SpotifyParty.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SpotifyParty.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -137,6 +143,8 @@
 		2F1D583F24BE80230035283A /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				2F10160024C7C6F300F1C78F /* EventTableViewCell.h */,
+				2F10160124C7C6F300F1C78F /* EventTableViewCell.m */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -148,6 +156,8 @@
 				2F1D584324BE81A40035283A /* LoginViewController.m */,
 				2F1015F124C6072B00F1C78F /* NewEventViewController.h */,
 				2F1015F224C6072B00F1C78F /* NewEventViewController.m */,
+				2F1015FD24C7C55400F1C78F /* FindEventsViewController.h */,
+				2F1015FE24C7C55400F1C78F /* FindEventsViewController.m */,
 			);
 			path = "View Controllers";
 			sourceTree = "<group>";
@@ -497,6 +507,8 @@
 			files = (
 				2F1015F924C76F0E00F1C78F /* User.m in Sources */,
 				2F1D584424BE81A40035283A /* LoginViewController.m in Sources */,
+				2F10160224C7C6F300F1C78F /* EventTableViewCell.m in Sources */,
+				2F1015FF24C7C55400F1C78F /* FindEventsViewController.m in Sources */,
 				2F1015F324C6072B00F1C78F /* NewEventViewController.m in Sources */,
 				2F52815C24BE2C4D00A52A95 /* AppDelegate.m in Sources */,
 				2F52816D24BE2C4E00A52A95 /* main.m in Sources */,
