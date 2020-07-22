@@ -16,6 +16,9 @@
 @property (weak, nonatomic) IBOutlet UIPickerView *playlistPicker;
 @property (weak, nonatomic) IBOutlet UITextView *eventDescriptionField;
 
+// TODO: Pull the users playlists from spotify and load them in the view picker
+// TODO: Add album cover image, pulled from spotify playlist selected
+
 @property (nonatomic, strong) NSArray *playlists;
 
 @end
@@ -31,12 +34,14 @@
 }
 
 - (IBAction)createEventPressed:(id)sender {
+    // TODO: Add alerts, similar to login view
+    
     NSString *playlist;
     playlist = [self.playlists objectAtIndex:[self.playlistPicker selectedRowInComponent:0]];
+    // TODO: Send the playlist URI instead of its name, when they are actually loaded from Spotify
     
     if (self.eventDescriptionField.hasText && self.eventNameField.hasText) {
         [Event postEvent:self.eventDescriptionField.text withName:self.eventNameField.text withExplicit: @(self.allowExplicitToggle.on ? 1 : 0) withCompletion:^(BOOL succeeded, NSError * _Nullable error) {
-            // Code to exectute when posted successfully
             if (!error) {
                 NSLog(@"Event Posted");
                 [self dismissViewControllerAnimated:YES completion:nil];
