@@ -17,8 +17,9 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic, strong) NSString *userID;
 @property (nonatomic, strong) PFUser *author;
 @property (nonatomic, strong) NSString *eventDescription;
+@property (nonatomic, strong) NSNumber *explicitSongs;
 
-+ (void) postEvent: (NSString * _Nullable) description withName: (NSString * _Nullable) name withCompletion: (PFBooleanResultBlock  _Nullable)completion;
++ (void) postEvent: (NSString * _Nullable) description withName: (NSString * _Nullable) name withExplicit: (NSNumber *_Nullable) explicit withCompletion: (PFBooleanResultBlock  _Nullable)completion;
 
 @end
 

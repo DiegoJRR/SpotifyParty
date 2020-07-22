@@ -13,18 +13,20 @@
 @dynamic eventName;
 @dynamic userID;
 @dynamic author;
+@dynamic explicitSongs;
 @dynamic eventDescription;
 
 + (nonnull NSString *)parseClassName {
     return @"Event";
 }
 
-+ (void) postEvent: ( NSString * _Nullable )description withName: (NSString * _Nullable) name withCompletion: (PFBooleanResultBlock  _Nullable)completion {
++ (void) postEvent: ( NSString * _Nullable )description withName: (NSString * _Nullable) name withExplicit: (NSNumber *_Nullable) explicit withCompletion: (PFBooleanResultBlock  _Nullable)completion {
     
     Event *newEvent = [Event new];
     newEvent.author = [PFUser currentUser];
     newEvent.eventName = name;
     newEvent.eventDescription = description;
+    newEvent.explicitSongs = explicit;
     
     [newEvent saveInBackgroundWithBlock: completion];
 }
