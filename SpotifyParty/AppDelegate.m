@@ -49,7 +49,7 @@ static NSString * const tokenRefreshURLString = @"https://spotify-swap-tokens.he
 
 -(void)authenticateSession{
     // Authenticates a session, and open the Spotify app if available
-    SPTScope requestedscopes = SPTAppRemoteControlScope;
+    SPTScope requestedscopes = SPTPlaylistReadPrivateScope | SPTPlaylistModifyPublicScope | SPTPlaylistModifyPrivateScope |SPTUserFollowReadScope | SPTUserFollowModifyScope | SPTUserLibraryReadScope | SPTUserLibraryModifyScope | SPTUserTopReadScope | SPTAppRemoteControlScope | SPTUserReadEmailScope | SPTUserReadPrivateScope | SPTStreamingScope;
     
     self.sessionManager = [SPTSessionManager sessionManagerWithConfiguration:self.configuration delegate:self];
     [self.sessionManager initiateSessionWithScope:requestedscopes options:SPTDefaultAuthorizationOption];
