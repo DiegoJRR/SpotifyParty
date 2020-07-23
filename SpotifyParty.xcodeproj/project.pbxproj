@@ -132,6 +132,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		2F14A3EE24CA44EE00FCA8F1 /* API */ = {
+			isa = PBXGroup;
+			children = (
+				2FFA2C8B24C9EE30005D44F8 /* APIManager.h */,
+				2FFA2C8C24C9EE30005D44F8 /* APIManager.m */,
+			);
+			path = API;
+			sourceTree = "<group>";
+		};
 		2F1D583E24BE801B0035283A /* Models */ = {
 			isa = PBXGroup;
 			children = (
@@ -191,6 +200,7 @@
 		2F52815924BE2C4D00A52A95 /* SpotifyParty */ = {
 			isa = PBXGroup;
 			children = (
+				2F14A3EE24CA44EE00FCA8F1 /* API */,
 				2F1D584124BE80350035283A /* View Controllers */,
 				2F1D583F24BE80230035283A /* Views */,
 				2F1D583E24BE801B0035283A /* Models */,
@@ -203,8 +213,6 @@
 				2F52816824BE2C4E00A52A95 /* LaunchScreen.storyboard */,
 				2F52816B24BE2C4E00A52A95 /* Info.plist */,
 				2F52816C24BE2C4E00A52A95 /* main.m */,
-				2FFA2C8B24C9EE30005D44F8 /* APIManager.h */,
-				2FFA2C8C24C9EE30005D44F8 /* APIManager.m */,
 			);
 			path = SpotifyParty;
 			sourceTree = "<group>";
