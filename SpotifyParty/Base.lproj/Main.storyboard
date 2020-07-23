@@ -268,17 +268,18 @@
                     <navigationItem key="navigationItem" title="Find Events" id="5Rm-BX-8CO">
                         <barButtonItem key="rightBarButtonItem" title="Item" image="plus.circle" catalog="system" id="yMh-9D-PSD">
                             <connections>
-                                <segue destination="y8y-YB-tZC" kind="show" id="82H-m6-pWn"/>
+                                <action selector="newEventTapped:" destination="aZX-eP-FYB" id="7KC-82-GFx"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
                     <connections>
                         <outlet property="tableView" destination="B8L-nl-1kT" id="PS2-pT-qd5"/>
+                        <segue destination="y8y-YB-tZC" kind="show" identifier="newEventSegue" id="qeB-ZC-LFH"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="CeP-Ro-ls3" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-184.05797101449278" y="1769.8660714285713"/>
+            <point key="canvasLocation" x="-184" y="1770"/>
         </scene>
         <!--New Event-->
         <scene sceneID="rNe-lh-MsW">

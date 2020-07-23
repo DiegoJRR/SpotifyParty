@@ -37,6 +37,13 @@ static NSString * const tokenRefreshURLString = @"https://spotify-swap-tokens.he
 
     return YES;
 }
+
+- (void) authorizationFlow {
+    // TODO: Add a completion block, to do any follow up actions after the user authenticates 
+    [self initialConfiguration];
+    [self authenticateSession];
+}
+
 -(void)initialConfiguration{
     // Handles the initial configuration for the Spotify session manager and token swapping
     self.configuration =[[SPTConfiguration alloc]initWithClientID:spotifyClientID redirectURL:[NSURL URLWithString:spotifyRedirectURLString]];
