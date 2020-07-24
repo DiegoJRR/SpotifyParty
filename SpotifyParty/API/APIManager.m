@@ -22,17 +22,15 @@
     return self;
 }
 
-- (void)getTrack: (void (^)(NSDictionary *responseData, NSError *error)) completion {
+- (void)getUserPlaylists: (void (^)(NSDictionary *responseData, NSError *error)) completion {
     // Define base url
-    NSURL *URL = [NSURL URLWithString:@"https://api.spotify.com/v1/tracks/6QdHlBTs0Rme9cn9EYFSc0"];
+    NSURL *URL = [NSURL URLWithString:@"https://api.spotify.com/v1/me/playlists"];
     
     AFHTTPSessionManager *manager = [[AFHTTPSessionManager alloc]initWithSessionConfiguration:[NSURLSessionConfiguration defaultSessionConfiguration]];
     manager.requestSerializer = [AFJSONRequestSerializer serializer];
     
     // Headers
     [manager.requestSerializer setValue:[@"Bearer " stringByAppendingString:self.accessToken] forHTTPHeaderField:@"Authorization"];
-    [manager.requestSerializer setValue:@"application/json" forHTTPHeaderField:@"Accept"];
-    [manager.requestSerializer setValue:@"application/json" forHTTPHeaderField:@"Content-Type"];
 
     // Make API request
     [manager GET:[URL absoluteString]

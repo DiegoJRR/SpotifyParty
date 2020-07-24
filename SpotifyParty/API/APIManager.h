@@ -16,7 +16,7 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic, strong) NSString *accessToken;
 
 - (instancetype)initWithToken:(NSString *)token;
-- (void) getTrack: (void (^)(NSDictionary  *responseData, NSError *error))completion;
+- (void) getUserPlaylists: (void (^)(NSDictionary  *responseData, NSError *error))completion;
 
 @end
 
