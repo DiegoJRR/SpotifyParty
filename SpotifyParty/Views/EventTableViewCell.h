@@ -15,6 +15,7 @@ NS_ASSUME_NONNULL_BEGIN
 @property (weak, nonatomic) IBOutlet UILabel *eventName;
 @property (weak, nonatomic) IBOutlet UILabel *eventDescription;
 @property (weak, nonatomic) IBOutlet UILabel *explicitSongs;
+@property (weak, nonatomic) IBOutlet UIImageView *playlistImage;
 
 
 @end

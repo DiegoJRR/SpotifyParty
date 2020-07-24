@@ -6,16 +6,16 @@
 //  Copyright © 2020 DiegoRamirez. All rights reserved.
 //
 
-#import <Foundation/Foundation.h>
+#import <Parse/Parse.h>
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface Playlist : NSObject
+@interface Playlist : PFObject<PFSubclassing>
 
 @property (nonatomic, strong) NSString *name;
 @property (nonatomic, strong) NSString *spotifyID;
 @property (nonatomic, strong) NSNumber *collaborative;
-@property (nonatomic, strong) NSURL *imageURL;
+@property (nonatomic, strong) NSString *imageURLString;
 
 - (instancetype)initWithDictionary:(NSDictionary *)dictionary;
 
