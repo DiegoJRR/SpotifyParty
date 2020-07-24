@@ -8,6 +8,9 @@
 
 #import "NewEventViewController.h"
 #import "Event.h"
+#import "Playlist.h"
+#import "AppDelegate.h"
+#import "APIManager.h"
 
 @interface NewEventViewController () <UIPickerViewDataSource, UIPickerViewDelegate>
 
@@ -16,10 +19,10 @@
 @property (weak, nonatomic) IBOutlet UIPickerView *playlistPicker;
 @property (weak, nonatomic) IBOutlet UITextView *eventDescriptionField;
 
-// TODO: Pull the users playlists from spotify and load them in the view picker
-// TODO: Add album cover image, pulled from spotify playlist selected
+@property (nonatomic, strong) NSMutableArray *playlists;
+@property (strong, nonatomic) AppDelegate *delegate;
 
-@property (nonatomic, strong) NSArray *playlists;
+// TODO: Add album cover image, pulled from spotify playlist selected
 
 @end
 
@@ -27,10 +30,39 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    self.playlists = @[@"Rock Playlist", @"Hip Hop Playlist", @"My epic playlist", @"Another Option"];
     
-    self.playlistPicker.dataSource = self;
     self.playlistPicker.delegate = self;
+    self.playlistPicker.dataSource = self;
+    
+    // Set the app delegate, to see the users access tokens
+    self.delegate = (AppDelegate *)[UIApplication sharedApplication].delegate;
+    self.playlists = [[NSMutableArray alloc] init];
+    
+    [self fetchPlaylists];
+}
+
+- (void)fetchPlaylists {
+    APIManager *apiManager = [[APIManager alloc] initWithToken:self.delegate.sessionManager.session.accessToken];
+    
+    [apiManager getUserPlaylists:^(NSDictionary * _Nonnull responseData, NSError * _Nonnull error) {
+        if (error) {
+            NSLog(@"%@", [error localizedDescription]);
+        } else {
+            NSArray *playlists = responseData[@"items"];
+            
+            for (NSDictionary *dictionary in playlists) {
+                // Allocate memory for object and initialize with the dictionary
+                Playlist *playlist = [[Playlist alloc] initWithDictionary:dictionary];
+                
+                // Add the object to the Playlist's array
+                [self.playlists addObject:playlist];
+            }
+            
+            // Reload picker view components with newly fetched playlists
+            [self.playlistPicker reloadAllComponents];
+        }
+    }];
+    
 }
 
 - (IBAction)createEventPressed:(id)sender {
@@ -48,7 +80,7 @@
                 
             } else {
                 NSLog(@"%@", error.localizedDescription);
-                }
+            }
         }];
     }
 }
@@ -66,7 +98,8 @@
 }
 
 - (NSString *)pickerView:(UIPickerView *)pickerView titleForRow:(NSInteger)row forComponent:(NSInteger)component {
-    return self.playlists[row];
+    Playlist *playlist = [self.playlists objectAtIndex:row];
+    return playlist.name;
 }
 
 @end

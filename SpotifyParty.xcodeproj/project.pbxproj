@@ -36,7 +36,9 @@
 		2F52816D24BE2C4E00A52A95 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F52816C24BE2C4E00A52A95 /* main.m */; };
 		2F52817724BE2C4F00A52A95 /* SpotifyPartyTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F52817624BE2C4F00A52A95 /* SpotifyPartyTests.m */; };
 		2F52818224BE2C4F00A52A95 /* SpotifyPartyUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F52818124BE2C4F00A52A95 /* SpotifyPartyUITests.m */; };
+		2F6C8FAF24CA4B9E004D5932 /* Playlist.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F6C8FAE24CA4B9E004D5932 /* Playlist.m */; };
 		2FD4B58724BF99B4005380FD /* SpotifyiOS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2FD4B58624BF99B4005380FD /* SpotifyiOS.framework */; };
+		2FFA2C8D24C9EE30005D44F8 /* APIManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 2FFA2C8C24C9EE30005D44F8 /* APIManager.m */; };
 		8DB6F07DC8ECBC7693CE3B72 /* Pods_SpotifyParty_SpotifyPartyUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 567B0D2168D64C3E98082C56 /* Pods_SpotifyParty_SpotifyPartyUITests.framework */; };
 		C3BCBA01C3504C9E639C2087 /* Pods_SpotifyPartyTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9652393B4DE5B8328CED638B /* Pods_SpotifyPartyTests.framework */; };
 /* End PBXBuildFile section */
@@ -90,7 +92,11 @@
 		2F52818124BE2C4F00A52A95 /* SpotifyPartyUITests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SpotifyPartyUITests.m; sourceTree = "<group>"; };
 		2F52818324BE2C4F00A52A95 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		2F5F795124BF40F60076D66B /* SpotifyParty copy-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = "SpotifyParty copy-Info.plist"; path = "/Users/diegojrr/Desktop/CodePath iOS Training/Personal Project/SpotifyParty/SpotifyParty copy-Info.plist"; sourceTree = "<absolute>"; };
+		2F6C8FAD24CA4B9E004D5932 /* Playlist.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Playlist.h; sourceTree = "<group>"; };
+		2F6C8FAE24CA4B9E004D5932 /* Playlist.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Playlist.m; sourceTree = "<group>"; };
 		2FD4B58624BF99B4005380FD /* SpotifyiOS.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = SpotifyiOS.framework; sourceTree = "<group>"; };
+		2FFA2C8B24C9EE30005D44F8 /* APIManager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = APIManager.h; sourceTree = "<group>"; };
+		2FFA2C8C24C9EE30005D44F8 /* APIManager.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = APIManager.m; sourceTree = "<group>"; };
 		3E5562773B6C0EFEE8FD6B16 /* Pods-SpotifyParty.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SpotifyParty.release.xcconfig"; path = "Target Support Files/Pods-SpotifyParty/Pods-SpotifyParty.release.xcconfig"; sourceTree = "<group>"; };
 		4AA7ED302F86CE5E246E0B4F /* Pods_SpotifyParty.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SpotifyParty.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		4E8CE222EA9D9EC2194C923C /* Pods-SpotifyPartyTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SpotifyPartyTests.debug.xcconfig"; path = "Target Support Files/Pods-SpotifyPartyTests/Pods-SpotifyPartyTests.debug.xcconfig"; sourceTree = "<group>"; };
@@ -129,6 +135,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		2F14A3EE24CA44EE00FCA8F1 /* API */ = {
+			isa = PBXGroup;
+			children = (
+				2FFA2C8B24C9EE30005D44F8 /* APIManager.h */,
+				2FFA2C8C24C9EE30005D44F8 /* APIManager.m */,
+			);
+			path = API;
+			sourceTree = "<group>";
+		};
 		2F1D583E24BE801B0035283A /* Models */ = {
 			isa = PBXGroup;
 			children = (
@@ -136,6 +151,8 @@
 				2F1015F824C76F0E00F1C78F /* User.m */,
 				2F1015FA24C77A1300F1C78F /* Event.h */,
 				2F1015FB24C77A1300F1C78F /* Event.m */,
+				2F6C8FAD24CA4B9E004D5932 /* Playlist.h */,
+				2F6C8FAE24CA4B9E004D5932 /* Playlist.m */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -188,6 +205,7 @@
 		2F52815924BE2C4D00A52A95 /* SpotifyParty */ = {
 			isa = PBXGroup;
 			children = (
+				2F14A3EE24CA44EE00FCA8F1 /* API */,
 				2F1D584124BE80350035283A /* View Controllers */,
 				2F1D583F24BE80230035283A /* Views */,
 				2F1D583E24BE801B0035283A /* Models */,
@@ -509,8 +527,10 @@
 				2F1D584424BE81A40035283A /* LoginViewController.m in Sources */,
 				2F10160224C7C6F300F1C78F /* EventTableViewCell.m in Sources */,
 				2F1015FF24C7C55400F1C78F /* FindEventsViewController.m in Sources */,
+				2FFA2C8D24C9EE30005D44F8 /* APIManager.m in Sources */,
 				2F1015F324C6072B00F1C78F /* NewEventViewController.m in Sources */,
 				2F52815C24BE2C4D00A52A95 /* AppDelegate.m in Sources */,
+				2F6C8FAF24CA4B9E004D5932 /* Playlist.m in Sources */,
 				2F52816D24BE2C4E00A52A95 /* main.m in Sources */,
 				2F52815F24BE2C4D00A52A95 /* SceneDelegate.m in Sources */,
 				2F1015FC24C77A1300F1C78F /* Event.m in Sources */,

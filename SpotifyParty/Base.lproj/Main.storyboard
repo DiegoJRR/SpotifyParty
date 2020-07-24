@@ -268,23 +268,24 @@
                     <navigationItem key="navigationItem" title="Find Events" id="5Rm-BX-8CO">
                         <barButtonItem key="rightBarButtonItem" title="Item" image="plus.circle" catalog="system" id="yMh-9D-PSD">
                             <connections>
-                                <segue destination="y8y-YB-tZC" kind="show" id="82H-m6-pWn"/>
+                                <action selector="newEventTapped:" destination="aZX-eP-FYB" id="7KC-82-GFx"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
                     <connections>
                         <outlet property="tableView" destination="B8L-nl-1kT" id="PS2-pT-qd5"/>
+                        <segue destination="y8y-YB-tZC" kind="show" identifier="newEventSegue" id="qeB-ZC-LFH"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="CeP-Ro-ls3" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-184.05797101449278" y="1769.8660714285713"/>
+            <point key="canvasLocation" x="-184" y="1770"/>
         </scene>
         <!--New Event-->
         <scene sceneID="rNe-lh-MsW">
             <objects>
                 <viewController id="y8y-YB-tZC" customClass="NewEventViewController" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="8UX-XJ-nbe">
+                    <view key="view" contentMode="scaleAspectFill" id="8UX-XJ-nbe">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
@@ -319,10 +320,6 @@
                                 <rect key="frame" x="338" y="483" width="49" height="31"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </switch>
-                            <pickerView contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="wMH-2A-pJf">
-                                <rect key="frame" x="189" y="323" width="205" height="91"/>
-                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
-                            </pickerView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Description" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="f6L-jh-CfG">
                                 <rect key="frame" x="37" y="218" width="117" height="56"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -331,7 +328,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" text="Generic event description" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="ScR-xc-xuU">
-                                <rect key="frame" x="217" y="201" width="177" height="91"/>
+                                <rect key="frame" x="217" y="210" width="177" height="73"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                 <color key="textColor" systemColor="labelColor" cocoaTouchSystemColor="darkTextColor"/>
@@ -346,6 +343,10 @@
                                     <action selector="createEventPressed:" destination="y8y-YB-tZC" eventType="touchUpInside" id="qpN-1p-WJv"/>
                                 </connections>
                             </button>
+                            <pickerView contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="wMH-2A-pJf">
+                                <rect key="frame" x="164" y="300" width="250" height="136"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                            </pickerView>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <gestureRecognizers/>
@@ -359,7 +360,7 @@
                         <outlet property="allowExplicitToggle" destination="2pU-Pu-elN" id="aMZ-WX-IaH"/>
                         <outlet property="eventDescriptionField" destination="ScR-xc-xuU" id="OpM-Yc-fpi"/>
                         <outlet property="eventNameField" destination="kox-mv-mAI" id="z1N-Iu-21b"/>
-                        <outlet property="playlistPicker" destination="wMH-2A-pJf" id="O49-6K-oCU"/>
+                        <outlet property="playlistPicker" destination="wMH-2A-pJf" id="55y-L5-gS8"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="n6h-SQ-cNB" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>

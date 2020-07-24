@@ -10,12 +10,13 @@
 #import <Parse/Parse.h>
 #import "Event.h"
 #import "EventTableViewCell.h"
+#import "AppDelegate.h"
 
 @interface FindEventsViewController ()
 
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 @property (nonatomic, strong) NSMutableArray *events;
-
+@property (strong, nonatomic) AppDelegate *delegate;
 
 @end
 
@@ -29,6 +30,9 @@
     // Set self as dataSource and delegate for the tableView
     self.tableView.dataSource = self;
     self.tableView.delegate = self;
+    
+    // Set the app delegate, to see the users access tokens
+    self.delegate = (AppDelegate *)[UIApplication sharedApplication].delegate;
     
     [self fetchEvents];
     
@@ -70,6 +74,33 @@
     cell.explicitSongs.text = [event.explicitSongs isEqualToNumber:@(1)] ? @"Explicit" : @"Not Explicit";
     
     return cell;
+}
+
+- (IBAction)newEventTapped:(id)sender {
+    //This function checks if the user is logged in to Spotify.
+    
+    // If the user has an access token
+    if(self.delegate.sessionManager.session.accessToken) {
+        // Manually segue to new event view
+        [self performSegueWithIdentifier:@"newEventSegue" sender:nil];
+    } else {
+        // Prompt the user to sign in with Spotify
+        UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"Authorize the app via Spotify" message: @"To create a new event, the app needs to be authorized via your Spotify account" preferredStyle:UIAlertControllerStyleAlert];
+        
+        UIAlertAction *cancelAction = [UIAlertAction actionWithTitle:@"Cancel" style:UIAlertActionStyleDefault handler:^(UIAlertAction * action){}];
+        [alert addAction:cancelAction];
+        
+        // If the user wants to sign in, prompt him here
+        UIAlertAction *authAction = [UIAlertAction actionWithTitle:@"Authorize" style:UIAlertActionStyleDefault handler:^(UIAlertAction * action){
+            [self.delegate authorizationFlow];
+        }];
+        [alert addAction:authAction];
+        
+        
+        [self presentViewController:alert animated:YES completion:nil];
+    }
+    
+    
 }
 
 @end
