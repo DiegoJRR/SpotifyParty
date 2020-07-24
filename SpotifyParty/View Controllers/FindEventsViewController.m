@@ -11,6 +11,7 @@
 #import "Event.h"
 #import "EventTableViewCell.h"
 #import "AppDelegate.h"
+#import "UIImageView+AFNetworking.h"
 
 @interface FindEventsViewController ()
 
@@ -43,6 +44,7 @@
     PFQuery *query = [PFQuery queryWithClassName:@"Event"];
     query.limit = 20;
     [query includeKey:@"author"];
+    [query includeKey:@"playlist"];
 
     // fetch data asynchronously
     [query findObjectsInBackgroundWithBlock:^(NSArray *events, NSError *error) {
@@ -68,6 +70,36 @@
     EventTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"EventTableViewCell"];
     
     Event *event = self.events[indexPath.row];
+    [event fetchIfNeeded];
+    
+    // Create the request for the poster image
+    NSURLRequest *request = [NSURLRequest requestWithURL:[NSURL URLWithString: event.playlist.imageURLString]];
+    
+    // Set poster to nil to remove the old one (when refreshing) and query for the new one
+    cell.playlistImage.image = nil;
+    
+    // Instantiate a weak link to the cell and fade in the image in the request
+    __weak EventTableViewCell *weakSelf = cell;
+    [weakSelf.playlistImage setImageWithURLRequest:request placeholderImage:nil
+                    success:^(NSURLRequest *imageRequest, NSHTTPURLResponse *imageResponse, UIImage *image) {
+                        
+                        // imageResponse will be nil if the image is cached
+                        if (imageResponse) {
+                            weakSelf.playlistImage.alpha = 0.0;
+                            weakSelf.playlistImage.image = image;
+                            
+                            //Animate UIImageView back to alpha 1 over 0.3sec
+                            [UIView animateWithDuration:0.5 animations:^{
+                                weakSelf.playlistImage.alpha = 1.0;
+                            }];
+                        }
+                        else {
+                            weakSelf.playlistImage.image = image;
+                        }
+                    }
+                    failure:^(NSURLRequest *request, NSHTTPURLResponse * response, NSError *error) {
+                        // do something for the failure condition
+                    }];
     
     cell.eventName.text = event.eventName;
     cell.eventDescription.text = event.eventDescription;
