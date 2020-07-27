@@ -11,6 +11,8 @@
 #import "Event.h"
 #import "EventTableViewCell.h"
 #import "AppDelegate.h"
+#import "UIImageView+AFNetworking.h"
+#import "EventViewController.h"
 
 @interface FindEventsViewController ()
 
@@ -43,13 +45,14 @@
     PFQuery *query = [PFQuery queryWithClassName:@"Event"];
     query.limit = 20;
     [query includeKey:@"author"];
-
+    [query includeKey:@"playlist"];
+    
     // fetch data asynchronously
     [query findObjectsInBackgroundWithBlock:^(NSArray *events, NSError *error) {
         if (events != nil && !error) {
             // Reverse the posts to show the most recent ones first
             events = [[events reverseObjectEnumerator] allObjects];
-
+            
             self.events = [NSMutableArray arrayWithArray:events];
             [self.tableView  reloadData];
         } else {
@@ -66,8 +69,36 @@
 - (nonnull UITableViewCell *)tableView:(nonnull UITableView *)tableView cellForRowAtIndexPath:(nonnull NSIndexPath *)indexPath {
     
     EventTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"EventTableViewCell"];
-    
     Event *event = self.events[indexPath.row];
+    [event fetchIfNeeded];
+    
+    // Create the request for the poster image
+    NSURLRequest *request = [NSURLRequest requestWithURL:[NSURL URLWithString: event.playlist.imageURLString]];
+    
+    // Set poster to nil to remove the old one (when refreshing) and query for the new one
+    cell.playlistImage.image = nil;
+    
+    // Instantiate a weak link to the cell and fade in the image in the request
+    __weak EventTableViewCell *weakSelf = cell;
+    [weakSelf.playlistImage setImageWithURLRequest:request placeholderImage:nil
+                                           success:^(NSURLRequest *imageRequest, NSHTTPURLResponse *imageResponse, UIImage *image) {
+        
+        // imageResponse will be nil if the image is cached
+        if (imageResponse) {
+            weakSelf.playlistImage.alpha = 0.0;
+            weakSelf.playlistImage.image = image;
+            
+            //Animate UIImageView back to alpha 1 over 0.3sec
+            [UIView animateWithDuration:0.5 animations:^{
+                weakSelf.playlistImage.alpha = 1.0;
+            }];
+        }
+        else {
+            weakSelf.playlistImage.image = image;
+        }
+    }
+                                           failure:^(NSURLRequest *request, NSHTTPURLResponse * response, NSError *error) {
+    }];
     
     cell.eventName.text = event.eventName;
     cell.eventDescription.text = event.eventDescription;
@@ -99,8 +130,26 @@
         
         [self presentViewController:alert animated:YES completion:nil];
     }
+}
+
+#pragma mark - Navigation
+
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
     
-    
+    if([segue.identifier isEqualToString:@"eventViewSegue"]) {
+        // Set the tappedCell as the cell that initiated the segue
+        UITableViewCell *tappedCell = sender;
+        
+        // Get the corresponding indexPath of that cell
+        NSIndexPath *indexPath = [self.tableView indexPathForCell:(UITableViewCell *)tappedCell];
+        
+        // Get the cell corresponding to that cell
+        Event *event = self.events[indexPath.row];
+        
+        // Set the viewController to segue into and pass the movie object
+        EventViewController *eventViewController = [segue destinationViewController];
+        eventViewController.event = event;
+    }
 }
 
 @end

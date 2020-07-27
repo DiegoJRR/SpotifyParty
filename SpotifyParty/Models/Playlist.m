@@ -10,12 +10,21 @@
 
 @implementation Playlist
 
+@dynamic name;
+@dynamic spotifyID;
+@dynamic imageURLString;
+@dynamic collaborative;
+
++ (nonnull NSString *)parseClassName {
+    return @"Playlist";
+}
+
 - (instancetype)initWithDictionary:(NSDictionary *)dictionary {
     self = [super init];
     if (self) {
         self.name = dictionary[@"name"];
         self.spotifyID = dictionary[@"owner"][@"id"];
-        self.imageURL = [NSURL URLWithString:dictionary[@"images"][0][@"url"]];
+        self.imageURLString = dictionary[@"images"][0][@"url"];
         self.collaborative = (NSNumber *)dictionary[@"collaborative"];
     }
     

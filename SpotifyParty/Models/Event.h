@@ -7,6 +7,7 @@
 //
 
 #import <Parse/Parse.h>
+#import "Playlist.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
@@ -18,10 +19,9 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic, strong) PFUser *author;
 @property (nonatomic, strong) NSString *eventDescription;
 @property (nonatomic, strong) NSNumber *explicitSongs;
+@property (nonatomic, strong) Playlist *playlist;
 
-// TODO: Add property for cover image
-
-+ (void) postEvent: (NSString * _Nullable) description withName: (NSString * _Nullable) name withExplicit: (NSNumber *_Nullable) explicit withCompletion: (PFBooleanResultBlock  _Nullable)completion;
++ (void) postEvent: ( NSString * _Nullable ) description withName: (NSString * _Nullable) name withExplicit: (NSNumber *_Nullable) explicit withPlaylist: (Playlist *_Nullable) myPlaylist withCompletion: (PFBooleanResultBlock  _Nullable)completion;
 
 @end
 
