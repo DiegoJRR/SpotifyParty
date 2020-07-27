@@ -31,9 +31,6 @@ static NSString * const tokenRefreshURLString = @"https://spotify-swap-tokens.he
     }];
     
     [Parse initializeWithConfiguration:config];
-    
-    [self initialConfiguration];
-    [self authenticateSession];
 
     return YES;
 }
