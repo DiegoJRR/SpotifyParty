@@ -429,7 +429,6 @@
                     </tabBar>
                     <connections>
                         <segue destination="ADK-Ni-nhj" kind="relationship" relationship="viewControllers" id="NOc-T5-PFv"/>
-                        <segue destination="yeU-KL-cLu" kind="relationship" relationship="viewControllers" id="C1u-d6-Sfl"/>
                         <segue destination="VDs-li-htU" kind="relationship" relationship="viewControllers" id="Zup-eC-MFt"/>
                     </connections>
                 </tabBarController>
@@ -456,26 +455,6 @@
             </objects>
             <point key="canvasLocation" x="-184.05797101449278" y="1069.4196428571429"/>
         </scene>
-        <!--Event-->
-        <scene sceneID="L2x-ax-NzW">
-            <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="Iih-S9-gtQ" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="yeU-KL-cLu" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Event" image="music.house" catalog="system" id="Hqi-Vc-YTv"/>
-                    <toolbarItems/>
-                    <navigationItem key="navigationItem" id="Uqa-sl-08a"/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="SZr-Ls-m0u">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="56"/>
-                        <autoresizingMask key="autoresizingMask"/>
-                    </navigationBar>
-                    <nil name="viewControllers"/>
-                    <connections>
-                        <segue destination="hW6-P3-5aW" kind="relationship" relationship="rootViewController" id="fxm-hs-SSZ"/>
-                    </connections>
-                </navigationController>
-            </objects>
-            <point key="canvasLocation" x="686" y="1069"/>
-        </scene>
         <!--Settings-->
         <scene sceneID="J6Q-Hz-HnT">
             <objects>
@@ -496,12 +475,8 @@
             <point key="canvasLocation" x="1573.913043478261" y="1068.75"/>
         </scene>
     </scenes>
-    <inferredMetricsTieBreakers>
-        <segue reference="ob3-Sd-J8a"/>
-    </inferredMetricsTieBreakers>
     <resources>
         <image name="location" catalog="system" width="128" height="115"/>
-        <image name="music.house" catalog="system" width="128" height="106"/>
         <image name="pause.rectangle.fill" catalog="system" width="128" height="93"/>
         <image name="pencil.circle" catalog="system" width="128" height="121"/>
         <image name="person.circle" catalog="system" width="128" height="121"/>
