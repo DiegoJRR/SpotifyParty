@@ -37,6 +37,7 @@
 		2F52817724BE2C4F00A52A95 /* SpotifyPartyTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F52817624BE2C4F00A52A95 /* SpotifyPartyTests.m */; };
 		2F52818224BE2C4F00A52A95 /* SpotifyPartyUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F52818124BE2C4F00A52A95 /* SpotifyPartyUITests.m */; };
 		2F6C8FAF24CA4B9E004D5932 /* Playlist.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F6C8FAE24CA4B9E004D5932 /* Playlist.m */; };
+		2F7F77C424CFA95E002C64F8 /* Song.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F7F77C324CFA95E002C64F8 /* Song.m */; };
 		2FD4B58724BF99B4005380FD /* SpotifyiOS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2FD4B58624BF99B4005380FD /* SpotifyiOS.framework */; };
 		2FE1E9D024CBA0440082D96C /* EventViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2FE1E9CF24CBA0440082D96C /* EventViewController.m */; };
 		2FFA2C8D24C9EE30005D44F8 /* APIManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 2FFA2C8C24C9EE30005D44F8 /* APIManager.m */; };
@@ -95,6 +96,8 @@
 		2F5F795124BF40F60076D66B /* SpotifyParty copy-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = "SpotifyParty copy-Info.plist"; path = "/Users/diegojrr/Desktop/CodePath iOS Training/Personal Project/SpotifyParty/SpotifyParty copy-Info.plist"; sourceTree = "<absolute>"; };
 		2F6C8FAD24CA4B9E004D5932 /* Playlist.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Playlist.h; sourceTree = "<group>"; };
 		2F6C8FAE24CA4B9E004D5932 /* Playlist.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Playlist.m; sourceTree = "<group>"; };
+		2F7F77C224CFA95E002C64F8 /* Song.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Song.h; sourceTree = "<group>"; };
+		2F7F77C324CFA95E002C64F8 /* Song.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Song.m; sourceTree = "<group>"; };
 		2FD4B58624BF99B4005380FD /* SpotifyiOS.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = SpotifyiOS.framework; sourceTree = "<group>"; };
 		2FE1E9CE24CBA0430082D96C /* EventViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = EventViewController.h; sourceTree = "<group>"; };
 		2FE1E9CF24CBA0440082D96C /* EventViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = EventViewController.m; sourceTree = "<group>"; };
@@ -156,6 +159,8 @@
 				2F1015FB24C77A1300F1C78F /* Event.m */,
 				2F6C8FAD24CA4B9E004D5932 /* Playlist.h */,
 				2F6C8FAE24CA4B9E004D5932 /* Playlist.m */,
+				2F7F77C224CFA95E002C64F8 /* Song.h */,
+				2F7F77C324CFA95E002C64F8 /* Song.m */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -528,6 +533,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2F7F77C424CFA95E002C64F8 /* Song.m in Sources */,
 				2F1015F924C76F0E00F1C78F /* User.m in Sources */,
 				2F1D584424BE81A40035283A /* LoginViewController.m in Sources */,
 				2F10160224C7C6F300F1C78F /* EventTableViewCell.m in Sources */,
