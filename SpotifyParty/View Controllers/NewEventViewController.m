@@ -11,6 +11,7 @@
 #import "Playlist.h"
 #import "AppDelegate.h"
 #import "APIManager.h"
+#import "HostViewController.h"
 
 @interface NewEventViewController () <UIPickerViewDataSource, UIPickerViewDelegate>
 
