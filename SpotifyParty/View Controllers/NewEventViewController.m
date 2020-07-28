@@ -69,16 +69,21 @@
     Playlist *playlist = [self.playlists objectAtIndex:[self.playlistPicker selectedRowInComponent:0]];
     
     if (self.eventDescriptionField.hasText && self.eventNameField.hasText) {
-        [Event postEvent:self.eventDescriptionField.text withName:self.eventNameField.text withExplicit:@(self.allowExplicitToggle.on ? 1 : 0) withPlaylist: playlist withCompletion:^(BOOL succeeded, NSError * _Nullable error)
+        
+        Event *newEvent = [[Event alloc] initWithConfig:self.eventDescriptionField.text withName:self.eventNameField.text withExplicit:@(self.allowExplicitToggle.on ? 1 : 0) withPlaylist:playlist];
+        
+        [newEvent saveInBackgroundWithBlock:^(BOOL succeeded, NSError * _Nullable error)
             {
             if (!error) {
                 NSLog(@"Event Posted");
+                NSLog(@"%@", newEvent.objectId);
                 [self dismissViewControllerAnimated:YES completion:nil];
                 
             } else {
                 NSLog(@"%@", error.localizedDescription);
             }
         }];
+        
     }
 }
 

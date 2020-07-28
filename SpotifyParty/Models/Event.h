@@ -13,7 +13,6 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface Event : PFObject<PFSubclassing>
 
-@property (nonatomic, strong) NSString *eventID;
 @property (nonatomic, strong) NSString *eventName;
 @property (nonatomic, strong) NSString *userID;
 @property (nonatomic, strong) PFUser *author;
@@ -21,7 +20,9 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic, strong) NSNumber *explicitSongs;
 @property (nonatomic, strong) Playlist *playlist;
 
-+ (void) postEvent: ( NSString * _Nullable ) description withName: (NSString * _Nullable) name withExplicit: (NSNumber *_Nullable) explicit withPlaylist: (Playlist *_Nullable) myPlaylist withCompletion: (PFBooleanResultBlock  _Nullable)completion;
+- (instancetype) initWithConfig: (NSString * _Nullable ) description withName: (NSString * _Nullable) name withExplicit: (NSNumber *_Nullable) explicit withPlaylist: (Playlist *_Nullable) myPlaylist;
+
+//+ (Event *) postEvent:  withCompletion: (PFBooleanResultBlock  _Nullable)completion;
 
 @end
 
