@@ -18,6 +18,7 @@
         self.explicit = (NSNumber *)dictionary[@"explicit"];
         self.duration = (NSNumber *)dictionary[@"duration_ms"];
         self.imageURL = dictionary[@"album"][@"images"][0][@"url"];
+        self.authorName = dictionary[@"artists"][0][@"name"];
     }
     
     return self;
