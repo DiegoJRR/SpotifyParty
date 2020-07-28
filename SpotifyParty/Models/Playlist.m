@@ -23,7 +23,7 @@
     self = [super init];
     if (self) {
         self.name = dictionary[@"name"];
-        self.spotifyID = dictionary[@"owner"][@"id"];
+        self.spotifyID = dictionary[@"id"];
         self.imageURLString = dictionary[@"images"][0][@"url"];
         self.collaborative = (NSNumber *)dictionary[@"collaborative"];
     }

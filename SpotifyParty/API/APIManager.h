@@ -17,6 +17,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 - (instancetype)initWithToken:(NSString *)token;
 - (void) getUserPlaylists: (void (^)(NSDictionary  *responseData, NSError *error))completion;
+- (void)getPlaylistTracks: (NSString * _Nullable) playlistID withCompletion: (void (^)(NSDictionary *responseData, NSError *error)) completion;
 
 @end
 
