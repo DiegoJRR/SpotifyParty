@@ -11,7 +11,7 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface AddedSongs : PFObject
+@interface AddedSongs : PFObject <PFSubclassing>
 
 @property (nonatomic, strong) PFUser *actingUser;
 @property (nonatomic, strong) NSString *songURI;

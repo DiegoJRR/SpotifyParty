@@ -12,6 +12,7 @@
 #import "AppDelegate.h"
 #import "Song.h"
 #import "SongTableViewCell.h"
+#import "AddedSongs.h"
 
 @interface EventViewController ()
 
@@ -83,6 +84,15 @@
                 Song *song = [[Song alloc] initWithDictionary:responseData];
                 [self.songs insertObject:song atIndex:0];
                 [self.tableView reloadData];
+                
+                [AddedSongs postSongToEvent:trackURI toEvent:self.event withCompletion:^(BOOL succeeded, NSError * _Nullable error) {
+                    if (error) {
+                        NSLog(@"Error :%@", error.localizedDescription);
+                    } else {
+                        NSLog(@"Song succesfully posted to the Parse backend, waiting for host's device to update the main playlist");
+                    }
+                }];
+                
             }
         }];
         
@@ -98,7 +108,6 @@
     cell.songName.text = song.name;
     cell.authorName.text = song.authorName;
     
-    //    cell.albumImage = nil;
     [cell.albumImage setImageWithURL:[NSURL URLWithString: song.imageURL]];
     
     return cell;
