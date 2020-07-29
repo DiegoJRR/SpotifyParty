@@ -87,8 +87,7 @@
         <!--Event Name-->
         <scene sceneID="l6g-oz-aqu">
             <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="HOa-M5-6bC" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-                <viewController id="hW6-P3-5aW" customClass="EventViewController" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="EventViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="hW6-P3-5aW" customClass="EventViewController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="w17-FI-aSu">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -294,7 +293,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="B8L-nl-1kT">
-                                <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="759"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                 <prototypes>
@@ -363,6 +362,11 @@
                         <viewLayoutGuide key="safeArea" id="Q5h-kq-GwQ"/>
                     </view>
                     <navigationItem key="navigationItem" title="Find Events" id="5Rm-BX-8CO">
+                        <barButtonItem key="leftBarButtonItem" image="qrcode.viewfinder" catalog="system" id="tqW-qp-khS">
+                            <connections>
+                                <action selector="scanQR:" destination="aZX-eP-FYB" id="Xgw-lV-CNQ"/>
+                            </connections>
+                        </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" title="Item" image="plus.circle" catalog="system" id="yMh-9D-PSD">
                             <connections>
                                 <action selector="newEventTapped:" destination="aZX-eP-FYB" id="7KC-82-GFx"/>
@@ -372,11 +376,12 @@
                     <connections>
                         <outlet property="tableView" destination="B8L-nl-1kT" id="PS2-pT-qd5"/>
                         <segue destination="y8y-YB-tZC" kind="show" identifier="newEventSegue" id="qeB-ZC-LFH"/>
+                        <segue destination="hW6-P3-5aW" kind="show" identifier="segueWithQR" id="o4G-s3-7LV"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="CeP-Ro-ls3" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-184" y="1770"/>
+            <point key="canvasLocation" x="-184.05797101449278" y="1769.8660714285713"/>
         </scene>
         <!--New Event-->
         <scene sceneID="rNe-lh-MsW">
@@ -576,12 +581,16 @@
             <point key="canvasLocation" x="1573.913043478261" y="1068.75"/>
         </scene>
     </scenes>
+    <inferredMetricsTieBreakers>
+        <segue reference="o4G-s3-7LV"/>
+    </inferredMetricsTieBreakers>
     <resources>
         <image name="location" catalog="system" width="128" height="115"/>
         <image name="pause.rectangle.fill" catalog="system" width="128" height="93"/>
         <image name="pencil.circle" catalog="system" width="128" height="121"/>
         <image name="person.circle" catalog="system" width="128" height="121"/>
         <image name="plus.circle" catalog="system" width="128" height="121"/>
+        <image name="qrcode.viewfinder" catalog="system" width="128" height="114"/>
         <image name="s.square.fill" catalog="system" width="128" height="114"/>
         <image name="square.and.arrow.up.on.square" catalog="system" width="117" height="128"/>
         <image name="suit.heart" catalog="system" width="128" height="109"/>
