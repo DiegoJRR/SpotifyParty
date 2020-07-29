@@ -97,7 +97,7 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="xj9-I4-dc1">
-                                <rect key="frame" x="0.0" y="353" width="414" height="479"/>
+                                <rect key="frame" x="0.0" y="395" width="414" height="437"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                 <prototypes>
@@ -164,9 +164,27 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Spotify song link" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="nAi-Mo-igF">
+                                <rect key="frame" x="57" y="349" width="173" height="34"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cYj-Hd-dIH">
+                                <rect key="frame" x="302" y="351" width="67" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Add Song"/>
+                                <connections>
+                                    <action selector="addSongTapped:" destination="hW6-P3-5aW" eventType="touchUpInside" id="iRL-pP-v6h"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <gestureRecognizers/>
                         <viewLayoutGuide key="safeArea" id="C4y-wT-vPA"/>
+                        <connections>
+                            <outletCollection property="gestureRecognizers" destination="Jin-s5-1N2" appends="YES" id="PzJ-SS-IkW"/>
+                        </connections>
                     </view>
                     <navigationItem key="navigationItem" title="Event Name" id="vfc-HC-ZzW">
                         <barButtonItem key="rightBarButtonItem" title="Item" image="square.and.arrow.up.on.square" catalog="system" id="2mb-cf-emR">
@@ -178,10 +196,16 @@
                     <connections>
                         <outlet property="eventNameLabel" destination="PHe-VS-osi" id="iMt-Wi-hOn"/>
                         <outlet property="posterImageView" destination="Aap-am-qfP" id="aSE-F4-2dK"/>
+                        <outlet property="songsURLField" destination="nAi-Mo-igF" id="xEf-B1-9uH"/>
                         <outlet property="tableView" destination="xj9-I4-dc1" id="4Ri-K6-4TG"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="HOa-M5-6bC" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+                <tapGestureRecognizer id="Jin-s5-1N2">
+                    <connections>
+                        <action selector="tapped:" destination="hW6-P3-5aW" id="IRO-BG-66v"/>
+                    </connections>
+                </tapGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="685.50724637681162" y="1769.8660714285713"/>
         </scene>
