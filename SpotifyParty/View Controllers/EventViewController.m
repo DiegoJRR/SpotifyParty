@@ -85,6 +85,8 @@
                 [self.tableView reloadData];
             }
         }];
+        
+        [self.view endEditing:YES];
     }
 }
 
@@ -104,6 +106,10 @@
 
 - (NSInteger)tableView:(nonnull UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     return self.songs.count;
+}
+
+- (IBAction)tapped:(id)sender {
+    [self.view endEditing:YES];
 }
 
 @end

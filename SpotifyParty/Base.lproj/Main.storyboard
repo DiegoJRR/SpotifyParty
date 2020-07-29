@@ -180,7 +180,11 @@
                             </button>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <gestureRecognizers/>
                         <viewLayoutGuide key="safeArea" id="C4y-wT-vPA"/>
+                        <connections>
+                            <outletCollection property="gestureRecognizers" destination="Jin-s5-1N2" appends="YES" id="PzJ-SS-IkW"/>
+                        </connections>
                     </view>
                     <navigationItem key="navigationItem" title="Event Name" id="vfc-HC-ZzW">
                         <barButtonItem key="rightBarButtonItem" title="Item" image="square.and.arrow.up.on.square" catalog="system" id="2mb-cf-emR">
@@ -197,6 +201,11 @@
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="HOa-M5-6bC" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+                <tapGestureRecognizer id="Jin-s5-1N2">
+                    <connections>
+                        <action selector="tapped:" destination="hW6-P3-5aW" id="IRO-BG-66v"/>
+                    </connections>
+                </tapGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="685.50724637681162" y="1769.8660714285713"/>
         </scene>
