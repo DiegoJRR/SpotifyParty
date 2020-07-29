@@ -11,7 +11,6 @@
 
 @implementation Event
     
-@dynamic eventID;
 @dynamic eventName;
 @dynamic userID;
 @dynamic author;
@@ -23,16 +22,18 @@
     return @"Event";
 }
 
-+ (void) postEvent: ( NSString * _Nullable ) description withName: (NSString * _Nullable) name withExplicit: (NSNumber *_Nullable) explicit withPlaylist: (Playlist *_Nullable) myPlaylist withCompletion: (PFBooleanResultBlock  _Nullable)completion {
+- (instancetype) initWithConfig: (NSString * _Nullable ) description withName: (NSString * _Nullable) name withExplicit: (NSNumber *_Nullable) explicit withPlaylist: (Playlist *_Nullable) myPlaylist {
+    self = [Event new];
+    if(self) {
+        self.author = [PFUser currentUser];
+        self.eventName = name;
+        self.eventDescription = description;
+        self.explicitSongs = explicit;
+        self.playlist = myPlaylist;
+    }
     
-    Event *newEvent = [Event new];
-    newEvent.author = [PFUser currentUser];
-    newEvent.eventName = name;
-    newEvent.eventDescription = description;
-    newEvent.explicitSongs = explicit;
-    newEvent.playlist = myPlaylist;
-    
-    [newEvent saveInBackgroundWithBlock: completion];
+    return self;
 }
+
 
 @end

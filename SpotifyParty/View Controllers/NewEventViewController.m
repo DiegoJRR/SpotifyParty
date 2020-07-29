@@ -11,6 +11,8 @@
 #import "Playlist.h"
 #import "AppDelegate.h"
 #import "APIManager.h"
+#import "HostViewController.h"
+#import "SceneDelegate.h"
 
 @interface NewEventViewController () <UIPickerViewDataSource, UIPickerViewDelegate>
 
@@ -69,16 +71,34 @@
     Playlist *playlist = [self.playlists objectAtIndex:[self.playlistPicker selectedRowInComponent:0]];
     
     if (self.eventDescriptionField.hasText && self.eventNameField.hasText) {
-        [Event postEvent:self.eventDescriptionField.text withName:self.eventNameField.text withExplicit:@(self.allowExplicitToggle.on ? 1 : 0) withPlaylist: playlist withCompletion:^(BOOL succeeded, NSError * _Nullable error)
+        
+        Event *newEvent = [[Event alloc] initWithConfig:self.eventDescriptionField.text withName:self.eventNameField.text withExplicit:@(self.allowExplicitToggle.on ? 1 : 0) withPlaylist:playlist];
+        
+        [newEvent saveInBackgroundWithBlock:^(BOOL succeeded, NSError * _Nullable error)
             {
             if (!error) {
                 NSLog(@"Event Posted");
-                [self dismissViewControllerAnimated:YES completion:nil];
+                NSLog(@"%@", newEvent.objectId);
+                
+                // Segue to view with qr
+                
+                // Encode objectId in a qr
+                
+                
+                SceneDelegate *sceneDelegate = (SceneDelegate *) self.view.window.windowScene.delegate;
+                UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
+                HostViewController *hostViewController = [storyboard instantiateViewControllerWithIdentifier:@"HostViewController"];
+                hostViewController.event = newEvent;
+                
+                sceneDelegate.window.rootViewController = hostViewController;
                 
             } else {
                 NSLog(@"%@", error.localizedDescription);
             }
         }];
+        
+        
+        
     }
 }
 

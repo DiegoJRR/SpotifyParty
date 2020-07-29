@@ -479,6 +479,30 @@
             </objects>
             <point key="canvasLocation" x="685.50724637681162" y="2471.6517857142858"/>
         </scene>
+        <!--Host View Controller-->
+        <scene sceneID="ds6-jI-ooG">
+            <objects>
+                <viewController storyboardIdentifier="HostViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="Mwv-39-O8v" customClass="HostViewController" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="rrg-CD-Z5U">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="CMR-zC-UPN">
+                                <rect key="frame" x="87" y="275" width="240" height="128"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </imageView>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <viewLayoutGuide key="safeArea" id="ezm-bg-bqM"/>
+                    </view>
+                    <connections>
+                        <outlet property="qrImageView" destination="CMR-zC-UPN" id="wJk-VN-0Ez"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="2f7-qB-B2z" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-184" y="3349"/>
+        </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="oH4-Vz-5qP">
             <objects>
