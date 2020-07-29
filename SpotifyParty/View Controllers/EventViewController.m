@@ -73,6 +73,25 @@
     }];
 }
 
+- (IBAction)addSongTapped:(id)sender {
+    if(self.songsURLField.hasText) {
+        NSArray *urlComponents = [self.songsURLField.text componentsSeparatedByString:@"/"];
+        NSString *path = urlComponents[4];
+        NSString *trackURI = [path componentsSeparatedByString:@"?"][0];
+        
+        
+        [self.apiManager getTrack:trackURI withCompletion:^(NSDictionary * _Nonnull responseData, NSError * _Nonnull error) {
+            if (error) {
+                NSLog(@"%@", [error localizedDescription]);
+            } else {
+                Song *song = [[Song alloc] initWithDictionary:responseData];
+                [self.songs insertObject:song atIndex:0];
+                [self.tableView reloadData];
+            }
+        }];
+    }
+}
+
 - (nonnull UITableViewCell *)tableView:(nonnull UITableView *)tableView cellForRowAtIndexPath:(nonnull NSIndexPath *)indexPath {
     
     SongTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"SongTableViewCell"];
