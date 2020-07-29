@@ -38,7 +38,7 @@
     self.delegate = (AppDelegate *)[UIApplication sharedApplication].delegate;
     
     [self fetchEvents];
-
+    
 }
 
 -(void)fetchEvents{
