@@ -28,6 +28,7 @@
 		2F1015FF24C7C55400F1C78F /* FindEventsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F1015FE24C7C55400F1C78F /* FindEventsViewController.m */; };
 		2F10160224C7C6F300F1C78F /* EventTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F10160124C7C6F300F1C78F /* EventTableViewCell.m */; };
 		2F1D584424BE81A40035283A /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F1D584324BE81A40035283A /* LoginViewController.m */; };
+		2F4611C624D223E000B5B542 /* AddedSongs.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F4611C524D223E000B5B542 /* AddedSongs.m */; };
 		2F52815C24BE2C4D00A52A95 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F52815B24BE2C4D00A52A95 /* AppDelegate.m */; };
 		2F52815F24BE2C4D00A52A95 /* SceneDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F52815E24BE2C4D00A52A95 /* SceneDelegate.m */; };
 		2F52816524BE2C4D00A52A95 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2F52816324BE2C4D00A52A95 /* Main.storyboard */; };
@@ -79,6 +80,8 @@
 		2F10160124C7C6F300F1C78F /* EventTableViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = EventTableViewCell.m; sourceTree = "<group>"; };
 		2F1D584224BE81A40035283A /* LoginViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LoginViewController.h; sourceTree = "<group>"; };
 		2F1D584324BE81A40035283A /* LoginViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LoginViewController.m; sourceTree = "<group>"; };
+		2F4611C424D223E000B5B542 /* AddedSongs.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AddedSongs.h; sourceTree = "<group>"; };
+		2F4611C524D223E000B5B542 /* AddedSongs.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AddedSongs.m; sourceTree = "<group>"; };
 		2F52815724BE2C4D00A52A95 /* SpotifyParty.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SpotifyParty.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		2F52815A24BE2C4D00A52A95 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		2F52815B24BE2C4D00A52A95 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -167,6 +170,8 @@
 				2F6C8FAE24CA4B9E004D5932 /* Playlist.m */,
 				2F7F77C224CFA95E002C64F8 /* Song.h */,
 				2F7F77C324CFA95E002C64F8 /* Song.m */,
+				2F4611C424D223E000B5B542 /* AddedSongs.h */,
+				2F4611C524D223E000B5B542 /* AddedSongs.m */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -546,6 +551,7 @@
 				2F7F77C424CFA95E002C64F8 /* Song.m in Sources */,
 				2F1015F924C76F0E00F1C78F /* User.m in Sources */,
 				2F7F77C724CFBC10002C64F8 /* SongTableViewCell.m in Sources */,
+				2F4611C624D223E000B5B542 /* AddedSongs.m in Sources */,
 				2F1D584424BE81A40035283A /* LoginViewController.m in Sources */,
 				2F10160224C7C6F300F1C78F /* EventTableViewCell.m in Sources */,
 				2F1015FF24C7C55400F1C78F /* FindEventsViewController.m in Sources */,
