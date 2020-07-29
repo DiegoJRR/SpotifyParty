@@ -13,6 +13,7 @@
 #import "AppDelegate.h"
 #import "UIImageView+AFNetworking.h"
 #import "EventViewController.h"
+#import "DYQRCodeDecoderViewController.h"
 
 @interface FindEventsViewController ()
 
@@ -96,8 +97,7 @@
         else {
             weakSelf.playlistImage.image = image;
         }
-    }
-                                           failure:^(NSURLRequest *request, NSHTTPURLResponse * response, NSError *error) {
+    } failure:^(NSURLRequest *request, NSHTTPURLResponse * response, NSError *error) {
     }];
     
     cell.eventName.text = event.eventName;
@@ -132,6 +132,39 @@
     }
 }
 
+- (IBAction)scanQR:(id)sender {
+    DYQRCodeDecoderViewController *vc = [[DYQRCodeDecoderViewController alloc] initWithCompletion:^(BOOL succeeded, NSString *result) {
+        if (succeeded) {
+            NSLog(@"%@", result);
+            
+            // If there's a string decoded, query it from the Parse backend
+            // TODO: Handle an error (non existing key/event for example)
+            
+            PFQuery *query = [PFQuery queryWithClassName:@"Event"];
+            query.limit = 1;
+            [query whereKey:@"objectId" equalTo:result];
+            [query includeKey:@"author"];
+            [query includeKey:@"playlist"];
+            
+            // fetch data asynchronously
+            [query findObjectsInBackgroundWithBlock:^(NSArray *events, NSError *error) {
+                if (events != nil && !error) {
+                    [self performSegueWithIdentifier:@"segueWithQR" sender:(Event *)events[0]];
+                } else {
+                    NSLog(@"%@", error.localizedDescription);
+                }
+                
+            }];
+            
+        } else {
+            NSLog(@"failed");
+        }
+    }];
+
+    UINavigationController *navVC = [[UINavigationController alloc] initWithRootViewController:vc];
+    [self presentViewController:navVC animated:YES completion:NULL];
+}
+
 #pragma mark - Navigation
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
@@ -149,7 +182,14 @@
         // Set the viewController to segue into and pass the movie object
         EventViewController *eventViewController = [segue destinationViewController];
         eventViewController.event = event;
+        
+    } else if ([segue.identifier isEqualToString:@"segueWithQR"]) {
+        // Set the viewController to segue into and pass the movie object
+        EventViewController *eventViewController = [segue destinationViewController];
+        eventViewController.event = sender;
     }
+    
+
 }
 
 @end
