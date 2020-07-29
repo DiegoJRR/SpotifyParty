@@ -22,8 +22,6 @@ NS_ASSUME_NONNULL_BEGIN
 
 - (instancetype) initWithConfig: (NSString * _Nullable ) description withName: (NSString * _Nullable) name withExplicit: (NSNumber *_Nullable) explicit withPlaylist: (Playlist *_Nullable) myPlaylist;
 
-//+ (Event *) postEvent:  withCompletion: (PFBooleanResultBlock  _Nullable)completion;
-
 @end
 
 NS_ASSUME_NONNULL_END

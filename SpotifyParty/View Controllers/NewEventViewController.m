@@ -12,6 +12,7 @@
 #import "AppDelegate.h"
 #import "APIManager.h"
 #import "HostViewController.h"
+#import "SceneDelegate.h"
 
 @interface NewEventViewController () <UIPickerViewDataSource, UIPickerViewDelegate>
 
@@ -78,12 +79,25 @@
             if (!error) {
                 NSLog(@"Event Posted");
                 NSLog(@"%@", newEvent.objectId);
-                [self dismissViewControllerAnimated:YES completion:nil];
+                
+                // Segue to view with qr
+                
+                // Encode objectId in a qr
+                
+                
+                SceneDelegate *sceneDelegate = (SceneDelegate *) self.view.window.windowScene.delegate;
+                UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
+                HostViewController *hostViewController = [storyboard instantiateViewControllerWithIdentifier:@"HostViewController"];
+                hostViewController.event = newEvent;
+                
+                sceneDelegate.window.rootViewController = hostViewController;
                 
             } else {
                 NSLog(@"%@", error.localizedDescription);
             }
         }];
+        
+        
         
     }
 }
