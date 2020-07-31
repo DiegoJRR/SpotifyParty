@@ -15,7 +15,7 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic, strong) NSString *name;
 @property (nonatomic, strong) NSNumber *duration;
 @property (nonatomic, strong) NSNumber *explicit;
-@property (nonatomic, strong) NSString *id;
+@property (nonatomic, strong) NSString *spotifyID;
 @property (nonatomic, strong) NSString *imageURL;
 @property (nonatomic, strong) NSString *authorName;
 

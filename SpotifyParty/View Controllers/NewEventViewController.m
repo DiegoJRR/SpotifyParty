@@ -80,11 +80,6 @@
                 NSLog(@"Event Posted");
                 NSLog(@"%@", newEvent.objectId);
                 
-                // Segue to view with qr
-                
-                // Encode objectId in a qr
-                
-                
                 SceneDelegate *sceneDelegate = (SceneDelegate *) self.view.window.windowScene.delegate;
                 UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
                 HostViewController *hostViewController = [storyboard instantiateViewControllerWithIdentifier:@"HostViewController"];

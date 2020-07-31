@@ -187,11 +187,18 @@
                         </connections>
                     </view>
                     <navigationItem key="navigationItem" title="Event Name" id="vfc-HC-ZzW">
-                        <barButtonItem key="rightBarButtonItem" title="Item" image="square.and.arrow.up.on.square" catalog="system" id="2mb-cf-emR">
-                            <connections>
-                                <segue destination="13V-Me-gR7" kind="show" id="RGJ-lf-54L"/>
-                            </connections>
-                        </barButtonItem>
+                        <rightBarButtonItems>
+                            <barButtonItem title="Item" image="square.and.arrow.up.on.square" catalog="system" id="2mb-cf-emR">
+                                <connections>
+                                    <segue destination="13V-Me-gR7" kind="show" id="RGJ-lf-54L"/>
+                                </connections>
+                            </barButtonItem>
+                            <barButtonItem image="arrow.2.circlepath.circle" catalog="system" id="I3s-sR-iZd">
+                                <connections>
+                                    <action selector="pushChanges:" destination="hW6-P3-5aW" id="1mc-vd-iBu"/>
+                                </connections>
+                            </barButtonItem>
+                        </rightBarButtonItems>
                     </navigationItem>
                     <connections>
                         <outlet property="eventNameLabel" destination="PHe-VS-osi" id="iMt-Wi-hOn"/>
@@ -595,6 +602,7 @@
         <segue reference="o4G-s3-7LV"/>
     </inferredMetricsTieBreakers>
     <resources>
+        <image name="arrow.2.circlepath.circle" catalog="system" width="128" height="121"/>
         <image name="location" catalog="system" width="128" height="115"/>
         <image name="pause.rectangle.fill" catalog="system" width="128" height="93"/>
         <image name="pencil.circle" catalog="system" width="128" height="121"/>
