@@ -130,6 +130,10 @@
                     
                     [self fetchSongs];
                     [self.tableView reloadData];
+                    
+                    for (PFObject *song in newSongs) {
+                        [song deleteInBackground];
+                    }
                 }
             }];
         
