@@ -6,6 +6,7 @@
 //  Copyright © 2020 DiegoRamirez. All rights reserved.
 //
 
+#import <Parse/Parse.h>
 #import "EventViewController.h"
 #import "UIImageView+AFNetworking.h"
 #import "APIManager.h"
@@ -56,6 +57,7 @@
             NSLog(@"%@", [error localizedDescription]);
         } else {
             NSArray *songs = responseData[@"items"];
+            songs = [[songs reverseObjectEnumerator] allObjects];
             
             for (NSDictionary *dictionary in songs) {
                 // Allocate memory for object and initialize with the dictionary
@@ -90,6 +92,7 @@
                         NSLog(@"Error :%@", error.localizedDescription);
                     } else {
                         NSLog(@"Song succesfully posted to the Parse backend, waiting for host's device to update the main playlist");
+                        self.songsURLField.text = @"";
                     }
                 }];
                 
@@ -98,6 +101,42 @@
         
         [self.view endEditing:YES];
     }
+}
+
+- (IBAction)pushChanges:(id)sender {
+    PFQuery *query = [PFQuery queryWithClassName:@"AddedSongs"];
+    
+    [query whereKey:@"event" equalTo:self.event];
+    
+    // fetch data asynchronously
+    [query findObjectsInBackgroundWithBlock:^(NSArray *newSongs, NSError *error) {
+        if (newSongs != nil && !error) {
+            
+            NSMutableArray *songsURIS = [[NSMutableArray alloc] init];
+             
+            for (PFObject *song in newSongs) {
+                NSString *songURI = song[@"songURI"];
+                
+                [songsURIS addObject:songURI];
+            }
+            
+            NSArray *uris = [songsURIS copy];
+            
+            [self.apiManager postTracksToPlaylist:uris toPlaylist:self.event.playlist.spotifyID withCompletion:^(NSDictionary * _Nonnull responseData, NSError * _Nonnull error) {
+                if (error) {
+                    NSLog(@"Error :%@", error.localizedDescription);
+                } else {
+                    NSLog(@"Songs posted succesfully");
+                    
+                    [self fetchSongs];
+                    [self.tableView reloadData];
+                }
+            }];
+        
+        } else {
+            NSLog(@"%@", error.localizedDescription);
+        }
+    }];
 }
 
 - (nonnull UITableViewCell *)tableView:(nonnull UITableView *)tableView cellForRowAtIndexPath:(nonnull NSIndexPath *)indexPath {

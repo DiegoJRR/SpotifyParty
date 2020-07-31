@@ -19,6 +19,7 @@ NS_ASSUME_NONNULL_BEGIN
 - (void) getUserPlaylists: (void (^)(NSDictionary  *responseData, NSError *error))completion;
 - (void) getPlaylistTracks: (NSString * _Nullable) playlistID withCompletion: (void (^)(NSDictionary *responseData, NSError *error)) completion;
 - (void) getTrack: (NSString * _Nullable) trackURI withCompletion: (void (^)(NSDictionary *responseData, NSError *error)) completion;
+-(void) postTracksToPlaylist: (NSArray * _Nullable) songsURIS toPlaylist: (NSString * _Nullable) playlistURI withCompletion: (void (^)(NSDictionary *responseData, NSError *error)) completion;
 
 @end
 

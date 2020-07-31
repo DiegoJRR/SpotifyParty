@@ -14,7 +14,8 @@
     self = [super init];
     if (self) {
         self.name = dictionary[@"name"];
-        self.id = dictionary[@"id"];
+        
+        self.spotifyID = dictionary[@"id"];
         self.explicit = (NSNumber *)dictionary[@"explicit"];
         self.duration = (NSNumber *)dictionary[@"duration_ms"];
         self.imageURL = dictionary[@"album"][@"images"][0][@"url"];
