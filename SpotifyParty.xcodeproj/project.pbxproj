@@ -37,6 +37,7 @@
 		2F52816D24BE2C4E00A52A95 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F52816C24BE2C4E00A52A95 /* main.m */; };
 		2F52817724BE2C4F00A52A95 /* SpotifyPartyTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F52817624BE2C4F00A52A95 /* SpotifyPartyTests.m */; };
 		2F52818224BE2C4F00A52A95 /* SpotifyPartyUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F52818124BE2C4F00A52A95 /* SpotifyPartyUITests.m */; };
+		2F65469624D4C1F2007A6B2D /* EventQueue.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F65469524D4C1F2007A6B2D /* EventQueue.m */; };
 		2F6C8FAF24CA4B9E004D5932 /* Playlist.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F6C8FAE24CA4B9E004D5932 /* Playlist.m */; };
 		2F7C295424D0C438005EC324 /* HostViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F7C295324D0C438005EC324 /* HostViewController.m */; };
 		2F7F77C424CFA95E002C64F8 /* Song.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F7F77C324CFA95E002C64F8 /* Song.m */; };
@@ -99,6 +100,8 @@
 		2F52818124BE2C4F00A52A95 /* SpotifyPartyUITests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SpotifyPartyUITests.m; sourceTree = "<group>"; };
 		2F52818324BE2C4F00A52A95 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		2F5F795124BF40F60076D66B /* SpotifyParty copy-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = "SpotifyParty copy-Info.plist"; path = "/Users/diegojrr/Desktop/CodePath iOS Training/Personal Project/SpotifyParty/SpotifyParty copy-Info.plist"; sourceTree = "<absolute>"; };
+		2F65469424D4C1F2007A6B2D /* EventQueue.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = EventQueue.h; sourceTree = "<group>"; };
+		2F65469524D4C1F2007A6B2D /* EventQueue.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = EventQueue.m; sourceTree = "<group>"; };
 		2F6C8FAD24CA4B9E004D5932 /* Playlist.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Playlist.h; sourceTree = "<group>"; };
 		2F6C8FAE24CA4B9E004D5932 /* Playlist.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Playlist.m; sourceTree = "<group>"; };
 		2F7C295224D0C438005EC324 /* HostViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HostViewController.h; sourceTree = "<group>"; };
@@ -172,6 +175,8 @@
 				2F7F77C324CFA95E002C64F8 /* Song.m */,
 				2F4611C424D223E000B5B542 /* AddedSongs.h */,
 				2F4611C524D223E000B5B542 /* AddedSongs.m */,
+				2F65469424D4C1F2007A6B2D /* EventQueue.h */,
+				2F65469524D4C1F2007A6B2D /* EventQueue.m */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -562,6 +567,7 @@
 				2F6C8FAF24CA4B9E004D5932 /* Playlist.m in Sources */,
 				2F52816D24BE2C4E00A52A95 /* main.m in Sources */,
 				2FE1E9D024CBA0440082D96C /* EventViewController.m in Sources */,
+				2F65469624D4C1F2007A6B2D /* EventQueue.m in Sources */,
 				2F52815F24BE2C4D00A52A95 /* SceneDelegate.m in Sources */,
 				2F1015FC24C77A1300F1C78F /* Event.m in Sources */,
 			);
