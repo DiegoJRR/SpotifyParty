@@ -22,6 +22,7 @@
 
 /* Begin PBXBuildFile section */
 		10DAD584BCC8CFFD1655044D /* Pods_SpotifyParty.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4AA7ED302F86CE5E246E0B4F /* Pods_SpotifyParty.framework */; };
+		2F09814F24D892B700B442FC /* EventQueue.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F09814D24D892B700B442FC /* EventQueue.m */; };
 		2F1015F324C6072B00F1C78F /* NewEventViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F1015F224C6072B00F1C78F /* NewEventViewController.m */; };
 		2F1015F924C76F0E00F1C78F /* User.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F1015F824C76F0E00F1C78F /* User.m */; };
 		2F1015FC24C77A1300F1C78F /* Event.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F1015FB24C77A1300F1C78F /* Event.m */; };
@@ -69,6 +70,8 @@
 /* Begin PBXFileReference section */
 		28D92334B4D60C9F05FF1723 /* Pods-SpotifyParty-SpotifyPartyUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SpotifyParty-SpotifyPartyUITests.debug.xcconfig"; path = "Target Support Files/Pods-SpotifyParty-SpotifyPartyUITests/Pods-SpotifyParty-SpotifyPartyUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		2E0DBB422C8DD9DB248F673F /* Pods-SpotifyParty-SpotifyPartyUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SpotifyParty-SpotifyPartyUITests.release.xcconfig"; path = "Target Support Files/Pods-SpotifyParty-SpotifyPartyUITests/Pods-SpotifyParty-SpotifyPartyUITests.release.xcconfig"; sourceTree = "<group>"; };
+		2F09814D24D892B700B442FC /* EventQueue.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EventQueue.m; sourceTree = "<group>"; };
+		2F09814E24D892B700B442FC /* EventQueue.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EventQueue.h; sourceTree = "<group>"; };
 		2F1015F124C6072B00F1C78F /* NewEventViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NewEventViewController.h; sourceTree = "<group>"; };
 		2F1015F224C6072B00F1C78F /* NewEventViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NewEventViewController.m; sourceTree = "<group>"; };
 		2F1015F724C76F0E00F1C78F /* User.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = User.h; sourceTree = "<group>"; };
@@ -165,6 +168,8 @@
 		2F1D583E24BE801B0035283A /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				2F09814E24D892B700B442FC /* EventQueue.h */,
+				2F09814D24D892B700B442FC /* EventQueue.m */,
 				2F1015F724C76F0E00F1C78F /* User.h */,
 				2F1015F824C76F0E00F1C78F /* User.m */,
 				2F1015FA24C77A1300F1C78F /* Event.h */,
@@ -175,8 +180,6 @@
 				2F7F77C324CFA95E002C64F8 /* Song.m */,
 				2F4611C424D223E000B5B542 /* AddedSongs.h */,
 				2F4611C524D223E000B5B542 /* AddedSongs.m */,
-				2F65469424D4C1F2007A6B2D /* EventQueue.h */,
-				2F65469524D4C1F2007A6B2D /* EventQueue.m */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -565,12 +568,12 @@
 				2F7C295424D0C438005EC324 /* HostViewController.m in Sources */,
 				2FFA2C8D24C9EE30005D44F8 /* APIManager.m in Sources */,
 				2F1015F324C6072B00F1C78F /* NewEventViewController.m in Sources */,
+				2F09814F24D892B700B442FC /* EventQueue.m in Sources */,
 				2F52815C24BE2C4D00A52A95 /* AppDelegate.m in Sources */,
 				2F65469924D73DC6007A6B2D /* EventHostViewController.m in Sources */,
 				2F6C8FAF24CA4B9E004D5932 /* Playlist.m in Sources */,
 				2F52816D24BE2C4E00A52A95 /* main.m in Sources */,
 				2FE1E9D024CBA0440082D96C /* EventViewController.m in Sources */,
-				2F65469624D4C1F2007A6B2D /* EventQueue.m in Sources */,
 				2F52815F24BE2C4D00A52A95 /* SceneDelegate.m in Sources */,
 				2F1015FC24C77A1300F1C78F /* Event.m in Sources */,
 			);
