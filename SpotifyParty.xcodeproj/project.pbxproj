@@ -23,6 +23,7 @@
 /* Begin PBXBuildFile section */
 		10DAD584BCC8CFFD1655044D /* Pods_SpotifyParty.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4AA7ED302F86CE5E246E0B4F /* Pods_SpotifyParty.framework */; };
 		2F09814F24D892B700B442FC /* EventQueue.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F09814D24D892B700B442FC /* EventQueue.m */; };
+		2F09815224D8B5B600B442FC /* ConfigurationsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F09815124D8B5B600B442FC /* ConfigurationsViewController.m */; };
 		2F1015F324C6072B00F1C78F /* NewEventViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F1015F224C6072B00F1C78F /* NewEventViewController.m */; };
 		2F1015F924C76F0E00F1C78F /* User.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F1015F824C76F0E00F1C78F /* User.m */; };
 		2F1015FC24C77A1300F1C78F /* Event.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F1015FB24C77A1300F1C78F /* Event.m */; };
@@ -72,6 +73,8 @@
 		2E0DBB422C8DD9DB248F673F /* Pods-SpotifyParty-SpotifyPartyUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SpotifyParty-SpotifyPartyUITests.release.xcconfig"; path = "Target Support Files/Pods-SpotifyParty-SpotifyPartyUITests/Pods-SpotifyParty-SpotifyPartyUITests.release.xcconfig"; sourceTree = "<group>"; };
 		2F09814D24D892B700B442FC /* EventQueue.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EventQueue.m; sourceTree = "<group>"; };
 		2F09814E24D892B700B442FC /* EventQueue.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EventQueue.h; sourceTree = "<group>"; };
+		2F09815024D8B5B600B442FC /* ConfigurationsViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ConfigurationsViewController.h; sourceTree = "<group>"; };
+		2F09815124D8B5B600B442FC /* ConfigurationsViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ConfigurationsViewController.m; sourceTree = "<group>"; };
 		2F1015F124C6072B00F1C78F /* NewEventViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NewEventViewController.h; sourceTree = "<group>"; };
 		2F1015F224C6072B00F1C78F /* NewEventViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NewEventViewController.m; sourceTree = "<group>"; };
 		2F1015F724C76F0E00F1C78F /* User.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = User.h; sourceTree = "<group>"; };
@@ -210,6 +213,8 @@
 				2F7C295324D0C438005EC324 /* HostViewController.m */,
 				2F65469724D73DC6007A6B2D /* EventHostViewController.h */,
 				2F65469824D73DC6007A6B2D /* EventHostViewController.m */,
+				2F09815024D8B5B600B442FC /* ConfigurationsViewController.h */,
+				2F09815124D8B5B600B442FC /* ConfigurationsViewController.m */,
 			);
 			path = "View Controllers";
 			sourceTree = "<group>";
@@ -573,6 +578,7 @@
 				2F65469924D73DC6007A6B2D /* EventHostViewController.m in Sources */,
 				2F6C8FAF24CA4B9E004D5932 /* Playlist.m in Sources */,
 				2F52816D24BE2C4E00A52A95 /* main.m in Sources */,
+				2F09815224D8B5B600B442FC /* ConfigurationsViewController.m in Sources */,
 				2FE1E9D024CBA0440082D96C /* EventViewController.m in Sources */,
 				2F52815F24BE2C4D00A52A95 /* SceneDelegate.m in Sources */,
 				2F1015FC24C77A1300F1C78F /* Event.m in Sources */,
