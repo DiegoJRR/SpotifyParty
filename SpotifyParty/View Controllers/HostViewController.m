@@ -8,11 +8,13 @@
 
 #import "HostViewController.h"
 #import "UIImage+DYQRCodeEncoder.h"
+#import "EventHostViewController.h"
 
 
 @interface HostViewController ()
 
 @property (weak, nonatomic) IBOutlet UIImageView *qrImageView;
+@property (weak, nonatomic) IBOutlet UITableView *tableView;
 
 @end
 
@@ -25,6 +27,19 @@
     
     self.qrImageView.image = [UIImage DY_QRCodeImageWithString:self.event.objectId size:300.f];
     
+}
+
+#pragma mark - Navigation
+
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+    
+    if([segue.identifier isEqualToString:@"segueToHostEvent"]) {
+        // Set the viewController to segue into and pass the movie object
+        EventHostViewController *eventHostViewController = [segue destinationViewController];
+        eventHostViewController.event = self.event;
+        
+    }
+
 }
 
 
