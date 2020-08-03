@@ -13,6 +13,8 @@
 
 @interface ConfigurationsViewController ()
 
+@property (weak, nonatomic) IBOutlet UILabel *usernameLabel;
+
 @end
 
 @implementation ConfigurationsViewController
@@ -20,6 +22,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
+    self.usernameLabel.text = [PFUser currentUser].username;
 }
 
 - (IBAction)logoutTapped:(id)sender {
