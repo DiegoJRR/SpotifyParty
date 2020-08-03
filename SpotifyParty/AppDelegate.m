@@ -60,8 +60,14 @@ static NSString * const tokenRefreshURLString = @"https://spotify-swap-tokens.he
 }
 
 -(BOOL)application:(UIApplication *)app openURL:(NSURL *)url options:(NSDictionary<NSString *,id> *)options{
-    NSLog(@"Called");
-    [self.sessionManager application:app openURL:url options:options];
+    NSArray *urlComponents = [[url absoluteString] componentsSeparatedByString:@"/"];
+    
+    if([urlComponents[2] isEqualToString:@"callback"]) {
+        [self.sessionManager application:app openURL:url options:options];
+    } else {
+        NSLog(@"Nothing");
+    }
+    
     return true;
 }
 
@@ -86,6 +92,7 @@ static NSString * const tokenRefreshURLString = @"https://spotify-swap-tokens.he
          NSLog(@"Connected");
     }
 }
+
 
 #pragma mark - SPTSessionManagerDelegate
 -(void)sessionManager:(SPTSessionManager *)manager didRenewSession:(SPTSession *)session{
