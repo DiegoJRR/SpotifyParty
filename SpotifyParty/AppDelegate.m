@@ -65,7 +65,7 @@ static NSString * const tokenRefreshURLString = @"https://spotify-swap-tokens.he
     if([urlComponents[2] isEqualToString:@"callback"]) {
         [self.sessionManager application:app openURL:url options:options];
     } else {
-        NSLog(@"Nothing");
+        NSLog(@"%@", urlComponents[3]);
     }
     
     return true;
