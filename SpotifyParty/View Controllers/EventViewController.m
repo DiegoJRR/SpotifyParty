@@ -149,8 +149,10 @@
     SongTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"SongTableViewCell"];
     Song *song = self.songs[indexPath.row];
     
+    cell.event = self.event;
     cell.songName.text = song.name;
     cell.authorName.text = song.authorName;
+    cell.songURI = song.spotifyID;
     
     [cell.albumImage setImageWithURL:[NSURL URLWithString: song.imageURL]];
     

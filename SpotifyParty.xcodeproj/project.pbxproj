@@ -175,6 +175,8 @@
 				2F7F77C324CFA95E002C64F8 /* Song.m */,
 				2F4611C424D223E000B5B542 /* AddedSongs.h */,
 				2F4611C524D223E000B5B542 /* AddedSongs.m */,
+				2F65469424D4C1F2007A6B2D /* EventQueue.h */,
+				2F65469524D4C1F2007A6B2D /* EventQueue.m */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -568,6 +570,7 @@
 				2F6C8FAF24CA4B9E004D5932 /* Playlist.m in Sources */,
 				2F52816D24BE2C4E00A52A95 /* main.m in Sources */,
 				2FE1E9D024CBA0440082D96C /* EventViewController.m in Sources */,
+				2F65469624D4C1F2007A6B2D /* EventQueue.m in Sources */,
 				2F52815F24BE2C4D00A52A95 /* SceneDelegate.m in Sources */,
 				2F1015FC24C77A1300F1C78F /* Event.m in Sources */,
 			);
