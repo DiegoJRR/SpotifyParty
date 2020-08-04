@@ -36,9 +36,22 @@
     
     // Set the app delegate, to see the users access tokens
     self.delegate = (AppDelegate *)[UIApplication sharedApplication].delegate;
-    
     [self fetchEvents];
     
+    [[NSNotificationCenter defaultCenter] addObserver:self
+        selector:@selector(checkForEvent:)
+        name:UIApplicationWillEnterForegroundNotification
+        object:nil];
+}
+
+- (void) checkForEvent:(NSNotification *)notification {
+    NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
+    NSString *eventID = [userDefaults objectForKey:@"event"];
+    
+    if (eventID) {
+        [self segueToEvent: eventID];
+        [userDefaults setObject:nil forKey:@"event"];
+    }
 }
 
 -(void)fetchEvents{
@@ -48,7 +61,7 @@
     [query includeKey:@"author"];
     [query includeKey:@"playlist"];
     
-    // fetch data asynchronously
+    // Fetch data asynchronously
     [query findObjectsInBackgroundWithBlock:^(NSArray *events, NSError *error) {
         if (events != nil && !error) {
             // Reverse the posts to show the most recent ones first
@@ -109,7 +122,6 @@
 
 - (IBAction)newEventTapped:(id)sender {
     //This function checks if the user is logged in to Spotify.
-    
     // If the user has an access token
     if(self.delegate.sessionManager.session.accessToken) {
         // Manually segue to new event view
@@ -132,29 +144,33 @@
     }
 }
 
+- (void) segueToEvent: (NSString *) eventID {
+    // TODO: Handle an error (non existing key/event for example)
+    
+    PFQuery *query = [PFQuery queryWithClassName:@"Event"];
+    query.limit = 1;
+    [query whereKey:@"objectId" equalTo:eventID];
+    [query includeKey:@"author"];
+    [query includeKey:@"playlist"];
+    
+    // fetch data asynchronously
+    [query findObjectsInBackgroundWithBlock:^(NSArray *events, NSError *error) {
+        if (events != nil && !error) {
+            Event *event = (Event *)events[0];
+            [self performSegueWithIdentifier:@"segueWithQR" sender:event];
+        } else {
+            NSLog(@"%@", error.localizedDescription);
+        }
+    }];
+}
+
 - (IBAction)scanQR:(id)sender {
     DYQRCodeDecoderViewController *vc = [[DYQRCodeDecoderViewController alloc] initWithCompletion:^(BOOL succeeded, NSString *result) {
         if (succeeded) {
             NSLog(@"%@", result);
             
             // If there's a string decoded, query it from the Parse backend
-            // TODO: Handle an error (non existing key/event for example)
-            
-            PFQuery *query = [PFQuery queryWithClassName:@"Event"];
-            query.limit = 1;
-            [query whereKey:@"objectId" equalTo:result];
-            [query includeKey:@"author"];
-            [query includeKey:@"playlist"];
-            
-            // fetch data asynchronously
-            [query findObjectsInBackgroundWithBlock:^(NSArray *events, NSError *error) {
-                if (events != nil && !error) {
-                    [self performSegueWithIdentifier:@"segueWithQR" sender:(Event *)events[0]];
-                } else {
-                    NSLog(@"%@", error.localizedDescription);
-                }
-                
-            }];
+            [self segueToEvent:result];
             
         } else {
             NSLog(@"failed");
