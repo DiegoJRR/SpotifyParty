@@ -8,6 +8,7 @@
 
 #import "AppDelegate.h"
 #import <Parse/Parse.h>
+#import "SceneDelegate.h"
 
 // Credentials for the Spotify developer application
 static NSString * const spotifyClientID = @"34a573be80d04976888bced902186479";
@@ -62,10 +63,14 @@ static NSString * const tokenRefreshURLString = @"https://spotify-swap-tokens.he
 -(BOOL)application:(UIApplication *)app openURL:(NSURL *)url options:(NSDictionary<NSString *,id> *)options{
     NSArray *urlComponents = [[url absoluteString] componentsSeparatedByString:@"/"];
     
+    // Set the user defaults to nil evertime
+    NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
+    [userDefaults setObject:nil forKey:@"event"];
+    
     if([urlComponents[2] isEqualToString:@"callback"]) {
         [self.sessionManager application:app openURL:url options:options];
     } else {
-        NSLog(@"%@", urlComponents[3]);
+        [userDefaults setObject:urlComponents[3] forKey:@"event"];
     }
     
     return true;
