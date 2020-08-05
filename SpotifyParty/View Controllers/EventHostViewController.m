@@ -13,6 +13,7 @@
 #import "SongTableViewCell.h"
 #import "UIImageView+AFNetworking.h"
 #import "SceneDelegate.h"
+#import <Parse/Parse.h>
 
 @interface EventHostViewController ()
 
@@ -21,6 +22,8 @@
 @property (strong, nonatomic) APIManager *apiManager;
 @property (strong, nonatomic) AppDelegate *delegate;
 @property (strong, nonatomic) NSMutableArray *songs;
+@property (strong, nonatomic) NSMutableArray *likeActions;
+@property (strong, nonatomic) NSMutableArray *addActions;
 
 @end
 
@@ -39,7 +42,12 @@
     self.delegate = (AppDelegate *)[UIApplication sharedApplication].delegate;
     self.apiManager = [[APIManager alloc] initWithToken:self.delegate.sessionManager.session.accessToken];
     
+    // Initialize mutable arrays
     self.songs = [[NSMutableArray alloc] init];
+    self.likeActions = [[NSMutableArray alloc] init];
+    self.addActions = [[NSMutableArray alloc] init];
+    
+    // Fetch the songs
     [self fetchSongs];
 }
 
@@ -48,8 +56,9 @@
         if (error) {
             NSLog(@"%@", [error localizedDescription]);
         } else {
+            [self.songs removeAllObjects];
+            
             NSArray *songs = responseData[@"items"];
-            songs = [[songs reverseObjectEnumerator] allObjects];
             
             for (NSDictionary *dictionary in songs) {
                 // Allocate memory for object and initialize with the dictionary
@@ -62,6 +71,111 @@
             [self.tableView reloadData];
         }
     }];
+}
+
+- (IBAction)refreshTapped:(id)sender {
+    // This method will query the queue for the given event
+    PFQuery *query = [PFQuery queryWithClassName:@"EventQueue"];
+    [query whereKey:@"event" equalTo:self.event];
+    
+    // Fetch data asynchronously
+    [query findObjectsInBackgroundWithBlock:^(NSArray *actions, NSError *error) {
+        if (actions != nil && !error) {
+            
+            for (NSDictionary *action in actions) {
+                EventQueue *actionRequest = [[EventQueue alloc] initWithDictionary:action];
+                
+                if ([actionRequest.action isEqualToString:@"like"]) {
+                    [self.likeActions addObject:actionRequest];
+                } else if ([actionRequest.action isEqualToString:@"add"]) {
+                    [self.addActions addObject:actionRequest];
+                }
+                
+            }
+            
+            NSArray *completeSongs = [self addSongsToPlaylist:self.songs withAdded:self.addActions];
+            NSArray *newPlaylist = [self reorderSongs: completeSongs withLikes:self.likeActions];
+            [self.apiManager replacePlaylist:newPlaylist toPlaylist:self.event.playlist.spotifyID withCompletion:^(NSDictionary * _Nonnull responseData, NSError * _Nonnull error) {
+                if (error) {
+                    NSLog(@"%@", [error localizedDescription]);
+                } else {
+                    NSLog(@"Success updating the playlist");
+                    
+                    // Fetch the new playlist
+                    [self fetchSongs];
+                    
+                    // Remove the add and like requests from the backend
+                    for (EventQueue *addAction in self.addActions) {
+                        [addAction deleteInBackground];
+                    }
+                    
+                    for (EventQueue *likeAction in self.likeActions) {
+                        [likeAction deleteInBackground];
+                    }
+                    
+                    // Clean the local variables
+                    [self.addActions removeAllObjects];
+                    [self.likeActions removeAllObjects];
+                }
+            }];
+            
+        } else {
+            NSLog(@"%@", error.localizedDescription);
+        }
+    }];
+    
+    
+    
+}
+
+- (NSArray *) reorderSongs: (NSArray * _Nullable) songs withLikes: (NSArray * _Nullable) likesActions{
+    NSMutableDictionary *songsLikes = [[NSMutableDictionary alloc] init];
+    
+    // Populate the array with the existing songs
+    for (NSString *songURI in songs) {
+        [songsLikes setValue: @(0) forKey: songURI];
+    }
+    
+    // Create the dictionary with the like count for the songs modified
+    for (EventQueue *like in likesActions) {
+        
+        if (songsLikes[like.songURI]) {
+            int likes = [songsLikes[like.songURI] intValue];
+            likes = likes + 1;
+            [songsLikes setValue: @(likes) forKey: like.songURI];
+        } else {
+            int likes = 1;
+            [songsLikes setValue: @(likes) forKey: like.songURI];
+        }
+    }
+    
+    // Logic to sort the songsURIs in the dictionary by the number of likes
+    NSArray *sortedValues = [songsLikes.allValues sortedArrayUsingSelector:@selector(compare:)];
+    NSOrderedSet *uniqueValues = [NSOrderedSet orderedSetWithArray:sortedValues];
+    NSMutableArray *sortedKeys = [NSMutableArray arrayWithCapacity:songsLikes.count];
+    
+    for (id val in uniqueValues) {
+        NSArray *keys = [songsLikes allKeysForObject:val];
+        
+        // This sorts all the keys, songURIs, in the dictionary by the likes each one has
+        [sortedKeys addObjectsFromArray:[keys sortedArrayUsingSelector:@selector(compare:)]];
+    }
+    
+    // Put them in descending order
+    sortedKeys = [[[sortedKeys reverseObjectEnumerator] allObjects] mutableCopy];
+    
+    return sortedKeys;
+}
+
+- (NSArray *) addSongsToPlaylist: (NSArray * _Nullable) songs withAdded: (NSArray * _Nullable) addedActions {
+    NSMutableArray *completeSongs = [[NSMutableArray alloc] initWithArray:[songs valueForKey: @"spotifyID"]];
+    
+    // Go through the addActions array and all the songs to the playlist
+    for (EventQueue *addSong in addedActions) {
+        [completeSongs addObject:addSong.songURI];
+    }
+    
+    return completeSongs;
 }
 
 - (IBAction)endEventTapped:(id)sender {

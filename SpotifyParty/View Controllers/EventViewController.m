@@ -14,6 +14,7 @@
 #import "Song.h"
 #import "SongTableViewCell.h"
 #import "AddedSongs.h"
+#import "EventQueue.h"
 
 @interface EventViewController ()
 
@@ -57,7 +58,6 @@
             NSLog(@"%@", [error localizedDescription]);
         } else {
             NSArray *songs = responseData[@"items"];
-            songs = [[songs reverseObjectEnumerator] allObjects];
             
             for (NSDictionary *dictionary in songs) {
                 // Allocate memory for object and initialize with the dictionary
@@ -103,16 +103,15 @@
                 Song *song = [[Song alloc] initWithDictionary:responseData];
                 [self.songs insertObject:song atIndex:0];
                 [self.tableView reloadData];
-                
-                [AddedSongs postSongToEvent:trackURI toEvent:self.event withCompletion:^(BOOL succeeded, NSError * _Nullable error) {
-                    if (error) {
-                        NSLog(@"Error :%@", error.localizedDescription);
-                    } else {
-                        NSLog(@"Song succesfully posted to the Parse backend, waiting for host's device to update the main playlist");
+            
+                EventQueue *addSong = [[EventQueue alloc] initAddSong:trackURI inEvent:self.event];
+                [addSong saveInBackgroundWithBlock:^(BOOL succeeded, NSError * _Nullable error) {
+                    if (succeeded) {
                         self.songsURLField.text = @"";
+                    } else {
+                        NSLog(@"%@", error.localizedDescription);
                     }
                 }];
-                
             }
         }];
         
@@ -130,7 +129,7 @@
         if (newSongs != nil && !error) {
             
             NSMutableArray *songsURIS = [[NSMutableArray alloc] init];
-             
+            
             for (PFObject *song in newSongs) {
                 NSString *songURI = song[@"songURI"];
                 
@@ -153,7 +152,7 @@
                     }
                 }
             }];
-        
+            
         } else {
             NSLog(@"%@", error.localizedDescription);
         }
