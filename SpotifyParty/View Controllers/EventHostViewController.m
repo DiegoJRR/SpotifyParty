@@ -13,6 +13,7 @@
 #import "SongTableViewCell.h"
 #import "UIImageView+AFNetworking.h"
 #import "SceneDelegate.h"
+#import <Parse/Parse.h>
 
 @interface EventHostViewController ()
 
@@ -21,6 +22,8 @@
 @property (strong, nonatomic) APIManager *apiManager;
 @property (strong, nonatomic) AppDelegate *delegate;
 @property (strong, nonatomic) NSMutableArray *songs;
+@property (strong, nonatomic) NSMutableArray *likeActions;
+@property (strong, nonatomic) NSMutableArray *addActions;
 
 @end
 
@@ -39,7 +42,12 @@
     self.delegate = (AppDelegate *)[UIApplication sharedApplication].delegate;
     self.apiManager = [[APIManager alloc] initWithToken:self.delegate.sessionManager.session.accessToken];
     
+    // Initialize mutable arrays
     self.songs = [[NSMutableArray alloc] init];
+    self.likeActions = [[NSMutableArray alloc] init];
+    self.addActions = [[NSMutableArray alloc] init];
+    
+    // Fetch the songs
     [self fetchSongs];
 }
 
@@ -62,6 +70,74 @@
             [self.tableView reloadData];
         }
     }];
+}
+
+- (IBAction)refreshTapped:(id)sender {
+    // This method will query the queue for the given event
+    PFQuery *query = [PFQuery queryWithClassName:@"EventQueue"];
+    [query whereKey:@"event" equalTo:self.event];
+    
+    // Fetch data asynchronously
+    [query findObjectsInBackgroundWithBlock:^(NSArray *actions, NSError *error) {
+        if (actions != nil && !error) {
+            
+            for (NSDictionary *action in actions) {
+                EventQueue *actionRequest = [[EventQueue alloc] initWithDictionary:action];
+                
+                if ([actionRequest.action isEqualToString:@"like"]) {
+                    [self.likeActions addObject:actionRequest];
+                } else if ([actionRequest.action isEqualToString:@"add"]) {
+                    [self.addActions addObject:actionRequest];
+                }
+                
+            }
+            
+            [self reorderSongs];
+            [self addSongsToPlaylist];
+        
+        } else {
+            NSLog(@"%@", error.localizedDescription);
+        }
+    }];
+    
+    
+    
+    // It will rank the songs given the likes
+    // And then post the updates with the Spotify web API
+}
+
+- (void) reorderSongs {
+    NSMutableDictionary *songsLikes = [[NSMutableDictionary alloc] init];
+    
+    // Create the dictionary with the like count for the songs
+    for (EventQueue *like in self.likeActions) {
+        
+        if (songsLikes[like.songURI]) {
+            int likes = [songsLikes[like.songURI] intValue];
+            likes = likes + 1;
+            [songsLikes setValue: @(likes) forKey: like.songURI];
+        } else {
+            int likes = 1;
+            [songsLikes setValue: @(likes) forKey: like.songURI];
+        }
+        
+    }
+    
+}
+
+- (void) addSongsToPlaylist {
+    // Go through the addActions array and all the songs to the playlist
+    for (EventQueue *addSong in self.addActions) {
+        [self.apiManager getTrack:addSong.songURI withCompletion:^(NSDictionary * _Nonnull responseData, NSError * _Nonnull error) {
+            if (error) {
+                NSLog(@"%@", [error localizedDescription]);
+            } else {
+                Song *song = [[Song alloc] initWithDictionary:responseData];
+                [self.songs insertObject:song atIndex:0];
+                [self.tableView reloadData];
+            }
+        }];
+    }
 }
 
 - (IBAction)endEventTapped:(id)sender {

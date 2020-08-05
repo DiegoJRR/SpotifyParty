@@ -170,13 +170,21 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Spotify song link" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="nAi-Mo-igF">
+                            <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Spotify song link" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="nAi-Mo-igF">
                                 <rect key="frame" x="57" y="320" width="135.5" height="34"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="34" id="aQx-9N-xCu"/>
+                                    <constraint firstAttribute="width" constant="135.5" id="bbl-pn-tcc"/>
+                                </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
-                            <button opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cYj-Hd-dIH">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cYj-Hd-dIH">
                                 <rect key="frame" x="302" y="322" width="67" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="30" id="JAX-z8-Taa"/>
+                                    <constraint firstAttribute="width" constant="67" id="WQG-3G-fAO"/>
+                                </constraints>
                                 <state key="normal" title="Add Song"/>
                                 <connections>
                                     <action selector="addSongTapped:" destination="hW6-P3-5aW" eventType="touchUpInside" id="iRL-pP-v6h"/>
@@ -192,12 +200,11 @@
                             <constraint firstItem="xj9-I4-dc1" firstAttribute="leading" secondItem="C4y-wT-vPA" secondAttribute="leading" id="77o-Za-TPf"/>
                             <constraint firstItem="xj9-I4-dc1" firstAttribute="trailing" secondItem="C4y-wT-vPA" secondAttribute="trailing" id="B9u-jv-GoH"/>
                             <constraint firstItem="nAi-Mo-igF" firstAttribute="top" secondItem="PHe-VS-osi" secondAttribute="bottom" constant="20" id="BwL-Wy-RK9"/>
-                            <constraint firstItem="cYj-Hd-dIH" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="nAi-Mo-igF" secondAttribute="trailing" constant="20" id="Dwc-WR-Nc4"/>
                             <constraint firstItem="xj9-I4-dc1" firstAttribute="top" secondItem="cYj-Hd-dIH" secondAttribute="bottom" constant="20" id="HGz-Tq-sQa"/>
                             <constraint firstItem="Aap-am-qfP" firstAttribute="leading" secondItem="C4y-wT-vPA" secondAttribute="leading" constant="107" id="VGb-CH-0mf"/>
                             <constraint firstItem="C4y-wT-vPA" firstAttribute="trailing" secondItem="PHe-VS-osi" secondAttribute="trailing" constant="57" id="Wjk-Pw-Bpy"/>
                             <constraint firstItem="PHe-VS-osi" firstAttribute="top" secondItem="Aap-am-qfP" secondAttribute="bottom" constant="8" id="ex5-dT-sG0"/>
-                            <constraint firstItem="cYj-Hd-dIH" firstAttribute="centerY" secondItem="nAi-Mo-igF" secondAttribute="centerY" id="fST-Or-eDc"/>
+                            <constraint firstItem="cYj-Hd-dIH" firstAttribute="top" secondItem="PHe-VS-osi" secondAttribute="bottom" constant="22" id="icV-QN-dRe"/>
                             <constraint firstItem="C4y-wT-vPA" firstAttribute="trailing" secondItem="Aap-am-qfP" secondAttribute="trailing" constant="107" id="miX-M9-tcO"/>
                             <constraint firstItem="C4y-wT-vPA" firstAttribute="trailing" secondItem="cYj-Hd-dIH" secondAttribute="trailing" constant="45" id="qdz-EY-iCD"/>
                             <constraint firstItem="PHe-VS-osi" firstAttribute="leading" secondItem="C4y-wT-vPA" secondAttribute="leading" constant="57" id="r6L-XT-bHl"/>
@@ -698,11 +705,18 @@
                                 <items>
                                     <navigationItem title="Event Name" id="r02-fK-Fmo">
                                         <barButtonItem key="leftBarButtonItem" title="Item" image="person.2" catalog="system" id="8pE-14-7Ts"/>
-                                        <barButtonItem key="rightBarButtonItem" title="Item" image="square.and.arrow.up.on.square" catalog="system" id="mmv-7h-KKL">
-                                            <connections>
-                                                <action selector="shareTapped:" destination="pGU-Hh-Zdf" id="5QF-HS-Wnz"/>
-                                            </connections>
-                                        </barButtonItem>
+                                        <rightBarButtonItems>
+                                            <barButtonItem title="Item" image="square.and.arrow.up.on.square" catalog="system" id="mmv-7h-KKL">
+                                                <connections>
+                                                    <action selector="shareTapped:" destination="pGU-Hh-Zdf" id="5QF-HS-Wnz"/>
+                                                </connections>
+                                            </barButtonItem>
+                                            <barButtonItem image="arrow.2.circlepath.circle" catalog="system" id="UKM-qG-rPs">
+                                                <connections>
+                                                    <action selector="refreshTapped:" destination="pGU-Hh-Zdf" id="coz-v4-nHx"/>
+                                                </connections>
+                                            </barButtonItem>
+                                        </rightBarButtonItems>
                                     </navigationItem>
                                 </items>
                             </navigationBar>
