@@ -58,7 +58,6 @@
             NSLog(@"%@", [error localizedDescription]);
         } else {
             NSArray *songs = responseData[@"items"];
-            songs = [[songs reverseObjectEnumerator] allObjects];
             
             for (NSDictionary *dictionary in songs) {
                 // Allocate memory for object and initialize with the dictionary
