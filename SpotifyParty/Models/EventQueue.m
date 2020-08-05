@@ -29,4 +29,26 @@
     return self;
 }
 
+- (instancetype) initAddSong: (NSString * _Nullable) songURI inEvent: (Event * _Nullable) event {
+    self = [super init];
+    if (self) {
+        self.action = @"add";
+        self.event = event;
+        self.songURI = songURI;
+    }
+    
+    return self;
+}
+
+- (instancetype) initWithDictionary: (NSDictionary * _Nullable) dictionary {
+    self = [super init];
+    if (self) {
+        self.action = dictionary[@"action"];
+        self.event = dictionary[@"event"];
+        self.songURI = dictionary[@"songURI"];
+    }
+    
+    return self;
+}
+
 @end

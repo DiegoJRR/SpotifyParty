@@ -19,7 +19,9 @@ NS_ASSUME_NONNULL_BEGIN
 
 
 - (instancetype) initLike: (NSString * _Nullable) songURI inEvent: (Event * _Nullable) event;
-    
+- (instancetype) initAddSong: (NSString * _Nullable) songURI inEvent: (Event * _Nullable) event;
+- (instancetype) initWithDictionary: (NSDictionary * _Nullable) dictionary;
+
 @end
 
 NS_ASSUME_NONNULL_END
