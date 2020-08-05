@@ -57,7 +57,6 @@
 -(void)fetchEvents{
     // construct query
     PFQuery *query = [PFQuery queryWithClassName:@"Event"];
-    query.limit = 20;
     [query includeKey:@"author"];
     [query includeKey:@"playlist"];
     
