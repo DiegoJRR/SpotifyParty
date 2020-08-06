@@ -32,6 +32,11 @@ static NSString * const tokenRefreshURLString = @"https://spotify-swap-tokens.he
     }];
     
     [Parse initializeWithConfiguration:config];
+    
+    [[UIButton appearance] setTintColor:[UIColor labelColor]];
+    [[UIBarButtonItem appearance] setTintColor:[UIColor labelColor]];
+    [[UIButton appearance] setTitleColor:[UIColor labelColor] forState:UIControlStateNormal];
+
 
     return YES;
 }
