@@ -160,6 +160,7 @@
                                             <outlet property="authorName" destination="Mpr-Pu-Hlu" id="7OG-WJ-Xra"/>
                                             <outlet property="likeButton" destination="R55-jK-kSq" id="Jq6-or-8Ty"/>
                                             <outlet property="songName" destination="IXC-MB-NTq" id="AWP-Z9-wvu"/>
+                                            <segue destination="wde-J2-amA" kind="show" identifier="songSegue" id="vWq-tw-a3p"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
@@ -210,9 +211,6 @@
                             <constraint firstItem="PHe-VS-osi" firstAttribute="leading" secondItem="C4y-wT-vPA" secondAttribute="leading" constant="57" id="r6L-XT-bHl"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="C4y-wT-vPA"/>
-                        <connections>
-                            <outletCollection property="gestureRecognizers" destination="Jin-s5-1N2" appends="YES" id="PzJ-SS-IkW"/>
-                        </connections>
                     </view>
                     <navigationItem key="navigationItem" title="Event Name" id="vfc-HC-ZzW">
                         <rightBarButtonItems>
@@ -576,6 +574,54 @@
                 </tapGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="-184.05797101449278" y="2471.6517857142858"/>
+        </scene>
+        <!--Song View Controller-->
+        <scene sceneID="LDi-b7-mhT">
+            <objects>
+                <viewController modalPresentationStyle="fullScreen" id="wde-J2-amA" customClass="SongViewController" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="XP9-Sg-U5h">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="5sD-7q-W3H">
+                                <rect key="frame" x="90" y="86" width="234" height="234.5"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="5sD-7q-W3H" secondAttribute="height" multiplier="1:1" id="zVK-Kv-cmo"/>
+                                </constraints>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HP4-f8-aeP">
+                                <rect key="frame" x="54" y="414" width="303" height="53"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" weight="heavy" pointSize="20"/>
+                                <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8Xi-Je-uUi">
+                                <rect key="frame" x="54" y="475" width="186" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
+                                <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstItem="5sD-7q-W3H" firstAttribute="height" secondItem="Cab-Pk-6sL" secondAttribute="height" multiplier="1:3" id="JJy-97-elL"/>
+                            <constraint firstItem="5sD-7q-W3H" firstAttribute="top" secondItem="Cab-Pk-6sL" secondAttribute="top" constant="30" id="Xol-3q-zVK"/>
+                            <constraint firstItem="5sD-7q-W3H" firstAttribute="centerX" secondItem="XP9-Sg-U5h" secondAttribute="centerX" id="dGI-Lj-FNJ"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="Cab-Pk-6sL"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="cKI-Nl-0AG"/>
+                    <connections>
+                        <outlet property="albumImageView" destination="5sD-7q-W3H" id="dbN-YG-ZoH"/>
+                        <outlet property="authorNameLabel" destination="8Xi-Je-uUi" id="Vzh-Sz-VCN"/>
+                        <outlet property="songTitleLabel" destination="HP4-f8-aeP" id="D9k-Tb-7mJ"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="TbT-Th-vdg" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="685.50724637681162" y="2471.6517857142858"/>
         </scene>
         <!--Host View Controller-->
         <scene sceneID="ds6-jI-ooG">

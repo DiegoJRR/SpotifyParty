@@ -45,6 +45,7 @@
 		2F7F77C424CFA95E002C64F8 /* Song.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F7F77C324CFA95E002C64F8 /* Song.m */; };
 		2F7F77C724CFBC10002C64F8 /* SongTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F7F77C624CFBC10002C64F8 /* SongTableViewCell.m */; };
 		2FD4B58724BF99B4005380FD /* SpotifyiOS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2FD4B58624BF99B4005380FD /* SpotifyiOS.framework */; };
+		2FDEA92224DB6DDA00792EC7 /* SongViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2FDEA92124DB6DDA00792EC7 /* SongViewController.m */; };
 		2FE1E9D024CBA0440082D96C /* EventViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2FE1E9CF24CBA0440082D96C /* EventViewController.m */; };
 		2FFA2C8D24C9EE30005D44F8 /* APIManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 2FFA2C8C24C9EE30005D44F8 /* APIManager.m */; };
 		8DB6F07DC8ECBC7693CE3B72 /* Pods_SpotifyParty_SpotifyPartyUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 567B0D2168D64C3E98082C56 /* Pods_SpotifyParty_SpotifyPartyUITests.framework */; };
@@ -117,6 +118,8 @@
 		2F7F77C524CFBC10002C64F8 /* SongTableViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SongTableViewCell.h; sourceTree = "<group>"; };
 		2F7F77C624CFBC10002C64F8 /* SongTableViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SongTableViewCell.m; sourceTree = "<group>"; };
 		2FD4B58624BF99B4005380FD /* SpotifyiOS.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = SpotifyiOS.framework; sourceTree = "<group>"; };
+		2FDEA92024DB6DDA00792EC7 /* SongViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SongViewController.h; sourceTree = "<group>"; };
+		2FDEA92124DB6DDA00792EC7 /* SongViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SongViewController.m; sourceTree = "<group>"; };
 		2FE1E9CE24CBA0430082D96C /* EventViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = EventViewController.h; sourceTree = "<group>"; };
 		2FE1E9CF24CBA0440082D96C /* EventViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = EventViewController.m; sourceTree = "<group>"; };
 		2FFA2C8B24C9EE30005D44F8 /* APIManager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = APIManager.h; sourceTree = "<group>"; };
@@ -215,6 +218,8 @@
 				2F65469824D73DC6007A6B2D /* EventHostViewController.m */,
 				2F09815024D8B5B600B442FC /* ConfigurationsViewController.h */,
 				2F09815124D8B5B600B442FC /* ConfigurationsViewController.m */,
+				2FDEA92024DB6DDA00792EC7 /* SongViewController.h */,
+				2FDEA92124DB6DDA00792EC7 /* SongViewController.m */,
 			);
 			path = "View Controllers";
 			sourceTree = "<group>";
@@ -572,6 +577,7 @@
 				2F1015FF24C7C55400F1C78F /* FindEventsViewController.m in Sources */,
 				2F7C295424D0C438005EC324 /* HostViewController.m in Sources */,
 				2FFA2C8D24C9EE30005D44F8 /* APIManager.m in Sources */,
+				2FDEA92224DB6DDA00792EC7 /* SongViewController.m in Sources */,
 				2F1015F324C6072B00F1C78F /* NewEventViewController.m in Sources */,
 				2F09814F24D892B700B442FC /* EventQueue.m in Sources */,
 				2F52815C24BE2C4D00A52A95 /* AppDelegate.m in Sources */,

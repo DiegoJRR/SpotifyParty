@@ -8,6 +8,7 @@
 
 #import <Parse/Parse.h>
 #import "EventViewController.h"
+#import "SongViewController.h"
 #import "UIImageView+AFNetworking.h"
 #import "APIManager.h"
 #import "AppDelegate.h"
@@ -32,8 +33,6 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view.
-    
     // Set self as dataSource and delegate for the tableView
     self.tableView.dataSource = self;
     self.tableView.delegate = self;
@@ -44,11 +43,17 @@
     // Set poster to nil to remove the old one (when refreshing) and query for the new one
     self.posterImageView.image = nil;
     [self.posterImageView setImageWithURL:[NSURL URLWithString: self.event.playlist.imageURLString]];
+    self.posterImageView.layer.cornerRadius = 10;
+    
     self.eventNameLabel.text = self.event.eventName;
     
     self.songs = [[NSMutableArray alloc] init];
     [self fetchSongs];
     
+}
+
+- (void) viewDidAppear:(BOOL)animated {
+    self.navigationController.navigationBar.subviews.firstObject.alpha = 1;
 }
 
 - (void) fetchSongs {
@@ -162,6 +167,8 @@
 - (nonnull UITableViewCell *)tableView:(nonnull UITableView *)tableView cellForRowAtIndexPath:(nonnull NSIndexPath *)indexPath {
     
     SongTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"SongTableViewCell"];
+    cell.userInteractionEnabled = YES;
+    
     Song *song = self.songs[indexPath.row];
     
     cell.event = self.event;
@@ -180,6 +187,24 @@
 
 - (IBAction)tapped:(id)sender {
     [self.view endEditing:YES];
+}
+
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+    
+//    if([segue.identifier isEqualToString:@"songSegue"]) {
+        // Set the tappedCell as the cell that initiated the segue
+        UITableViewCell *tappedCell = sender;
+        
+        // Get the corresponding indexPath of that cell
+        NSIndexPath *indexPath = [self.tableView indexPathForCell:(UITableViewCell *)tappedCell];
+        
+        // Get the cell corresponding to that cell
+        Song *song = self.songs[indexPath.row];
+        
+        // Set the viewController to segue into and pass the movie object
+        SongViewController *songViewController = [segue destinationViewController];
+        songViewController.song = song;
+//    }
 }
 
 @end
