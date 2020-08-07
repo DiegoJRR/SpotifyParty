@@ -14,6 +14,7 @@
 #import "UIImageView+AFNetworking.h"
 #import "SceneDelegate.h"
 #import <Parse/Parse.h>
+#import "SongViewController.h"
 
 @interface EventHostViewController ()
 
@@ -236,6 +237,21 @@
 
 - (NSInteger)tableView:(nonnull UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     return self.songs.count;
+}
+
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+    // Set the tappedCell as the cell that initiated the segue
+    UITableViewCell *tappedCell = sender;
+    
+    // Get the corresponding indexPath of that cell
+    NSIndexPath *indexPath = [self.tableView indexPathForCell:(UITableViewCell *)tappedCell];
+    
+    // Get the cell corresponding to that cell
+    Song *song = self.songs[indexPath.row];
+    
+    // Set the viewController to segue into and pass the movie object
+    SongViewController *songViewController = [segue destinationViewController];
+    songViewController.song = song;
 }
 
 @end

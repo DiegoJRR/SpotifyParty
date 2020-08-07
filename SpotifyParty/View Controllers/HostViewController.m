@@ -50,8 +50,11 @@
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
     
     if([segue.identifier isEqualToString:@"segueToHostEvent"]) {
+        
+        UINavigationController *navController = [segue destinationViewController];
+        
         // Set the viewController to segue into and pass the movie object
-        EventHostViewController *eventHostViewController = [segue destinationViewController];
+        EventHostViewController *eventHostViewController = navController.viewControllers[0];
         eventHostViewController.event = self.event;
         
     }
