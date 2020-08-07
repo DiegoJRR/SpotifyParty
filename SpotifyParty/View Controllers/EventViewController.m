@@ -8,6 +8,7 @@
 
 #import <Parse/Parse.h>
 #import "EventViewController.h"
+#import "SongViewController.h"
 #import "UIImageView+AFNetworking.h"
 #import "APIManager.h"
 #import "AppDelegate.h"
@@ -25,6 +26,8 @@
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 @property (strong, nonatomic) APIManager *apiManager;
 @property (weak, nonatomic) IBOutlet UITextField *songsURLField;
+@property (weak, nonatomic) IBOutlet UIButton *addSongButton;
+@property (weak, nonatomic) IBOutlet UIButton *startNewSongButton;
 
 @end
 
@@ -32,8 +35,6 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view.
-    
     // Set self as dataSource and delegate for the tableView
     self.tableView.dataSource = self;
     self.tableView.delegate = self;
@@ -44,11 +45,17 @@
     // Set poster to nil to remove the old one (when refreshing) and query for the new one
     self.posterImageView.image = nil;
     [self.posterImageView setImageWithURL:[NSURL URLWithString: self.event.playlist.imageURLString]];
+    
     self.eventNameLabel.text = self.event.eventName;
     
     self.songs = [[NSMutableArray alloc] init];
     [self fetchSongs];
     
+}
+
+- (void) viewDidAppear:(BOOL)animated {
+    self.navigationController.navigationBar.subviews.firstObject.alpha = 0.6;
+
 }
 
 - (void) fetchSongs {
@@ -89,7 +96,15 @@
 }
 
 - (IBAction)addSongTapped:(id)sender {
-    
+    [UIView animateWithDuration:0.1 animations:^{
+        self.startNewSongButton.alpha = 0;
+        self.eventNameLabel.alpha = 0;
+        self.songsURLField.alpha = 1;
+        self.addSongButton.alpha = 1;
+    }];
+}
+
+- (IBAction)addSongAction:(id)sender {
     if(self.songsURLField.hasText) {
         NSArray *urlComponents = [self.songsURLField.text componentsSeparatedByString:@"/"];
         NSString *path = urlComponents[4];
@@ -108,6 +123,13 @@
                 [addSong saveInBackgroundWithBlock:^(BOOL succeeded, NSError * _Nullable error) {
                     if (succeeded) {
                         self.songsURLField.text = @"";
+                        
+                        [UIView animateWithDuration:0.1 animations:^{
+                            self.startNewSongButton.alpha = 1;
+                            self.eventNameLabel.alpha = 1;
+                            self.songsURLField.alpha = 0;
+                            self.addSongButton.alpha = 0;
+                        }];
                     } else {
                         NSLog(@"%@", error.localizedDescription);
                     }
@@ -118,6 +140,7 @@
         [self.view endEditing:YES];
     }
 }
+
 
 - (IBAction)pushChanges:(id)sender {
     PFQuery *query = [PFQuery queryWithClassName:@"AddedSongs"];
@@ -162,6 +185,8 @@
 - (nonnull UITableViewCell *)tableView:(nonnull UITableView *)tableView cellForRowAtIndexPath:(nonnull NSIndexPath *)indexPath {
     
     SongTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"SongTableViewCell"];
+    cell.userInteractionEnabled = YES;
+    
     Song *song = self.songs[indexPath.row];
     
     cell.event = self.event;
@@ -170,6 +195,7 @@
     cell.songURI = song.spotifyID;
     
     [cell.albumImage setImageWithURL:[NSURL URLWithString: song.imageURL]];
+    cell.albumImage.layer.cornerRadius = 5;
     
     return cell;
 }
@@ -180,6 +206,38 @@
 
 - (IBAction)tapped:(id)sender {
     [self.view endEditing:YES];
+    
+    [UIView animateWithDuration:0.1 animations:^{
+        self.startNewSongButton.alpha = 1;
+        self.eventNameLabel.alpha = 1;
+        self.songsURLField.alpha = 0;
+        self.addSongButton.alpha = 0;
+    }];
+}
+
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+    // Remove the editing and possible open views 
+    [self.view endEditing:YES];
+    
+    [UIView animateWithDuration:0.1 animations:^{
+        self.startNewSongButton.alpha = 1;
+        self.eventNameLabel.alpha = 1;
+        self.songsURLField.alpha = 0;
+        self.addSongButton.alpha = 0;
+    }];
+    
+    // Set the tappedCell as the cell that initiated the segue
+    UITableViewCell *tappedCell = sender;
+    
+    // Get the corresponding indexPath of that cell
+    NSIndexPath *indexPath = [self.tableView indexPathForCell:(UITableViewCell *)tappedCell];
+    
+    // Get the cell corresponding to that cell
+    Song *song = self.songs[indexPath.row];
+    
+    // Set the viewController to segue into and pass the movie object
+    SongViewController *songViewController = [segue destinationViewController];
+    songViewController.song = song;
 }
 
 @end
