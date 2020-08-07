@@ -27,6 +27,10 @@
             self.likeButton.imageView.transform = CGAffineTransformScale(CGAffineTransformIdentity, 0.4, 0.4);
         }];
         
+        [UIView animateWithDuration:0.3 animations:^{
+            self.likeButton.imageView.transform = CGAffineTransformScale(CGAffineTransformIdentity, 5/2, 5/2);
+        }];
+        
         EventQueue *newLike = [[EventQueue alloc] initLike:self.songURI inEvent:self.event];
         
         [newLike saveInBackgroundWithBlock:^(BOOL succeeded, NSError * _Nullable error) {

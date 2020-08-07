@@ -98,6 +98,7 @@
 - (IBAction)addSongTapped:(id)sender {
     [UIView animateWithDuration:0.1 animations:^{
         self.startNewSongButton.alpha = 0;
+        self.eventNameLabel.alpha = 0;
         self.songsURLField.alpha = 1;
         self.addSongButton.alpha = 1;
     }];
@@ -123,8 +124,9 @@
                     if (succeeded) {
                         self.songsURLField.text = @"";
                         
-                        [UIView animateWithDuration:0.3 animations:^{
+                        [UIView animateWithDuration:0.1 animations:^{
                             self.startNewSongButton.alpha = 1;
+                            self.eventNameLabel.alpha = 1;
                             self.songsURLField.alpha = 0;
                             self.addSongButton.alpha = 0;
                         }];
@@ -204,24 +206,38 @@
 
 - (IBAction)tapped:(id)sender {
     [self.view endEditing:YES];
+    
+    [UIView animateWithDuration:0.1 animations:^{
+        self.startNewSongButton.alpha = 1;
+        self.eventNameLabel.alpha = 1;
+        self.songsURLField.alpha = 0;
+        self.addSongButton.alpha = 0;
+    }];
 }
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+    // Remove the editing and possible open views 
+    [self.view endEditing:YES];
     
-//    if([segue.identifier isEqualToString:@"songSegue"]) {
-        // Set the tappedCell as the cell that initiated the segue
-        UITableViewCell *tappedCell = sender;
-        
-        // Get the corresponding indexPath of that cell
-        NSIndexPath *indexPath = [self.tableView indexPathForCell:(UITableViewCell *)tappedCell];
-        
-        // Get the cell corresponding to that cell
-        Song *song = self.songs[indexPath.row];
-        
-        // Set the viewController to segue into and pass the movie object
-        SongViewController *songViewController = [segue destinationViewController];
-        songViewController.song = song;
-//    }
+    [UIView animateWithDuration:0.1 animations:^{
+        self.startNewSongButton.alpha = 1;
+        self.eventNameLabel.alpha = 1;
+        self.songsURLField.alpha = 0;
+        self.addSongButton.alpha = 0;
+    }];
+    
+    // Set the tappedCell as the cell that initiated the segue
+    UITableViewCell *tappedCell = sender;
+    
+    // Get the corresponding indexPath of that cell
+    NSIndexPath *indexPath = [self.tableView indexPathForCell:(UITableViewCell *)tappedCell];
+    
+    // Get the cell corresponding to that cell
+    Song *song = self.songs[indexPath.row];
+    
+    // Set the viewController to segue into and pass the movie object
+    SongViewController *songViewController = [segue destinationViewController];
+    songViewController.song = song;
 }
 
 @end
