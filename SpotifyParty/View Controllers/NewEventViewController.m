@@ -38,6 +38,12 @@
     self.delegate = (AppDelegate *)[UIApplication sharedApplication].delegate;
     self.playlists = [[NSMutableArray alloc] init];
     
+    // Load the default values defined by the user
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    self.eventNameField.text = [defaults valueForKey:@"eventName"];
+    self.eventDescriptionField.text = [defaults valueForKey:@"eventDescription"];
+    self.allowExplicitToggle.on = [defaults boolForKey:@"banExplicit"];
+    
     [self fetchPlaylists];
 }
 

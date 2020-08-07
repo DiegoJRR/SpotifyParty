@@ -47,6 +47,7 @@
 		2FD4B58724BF99B4005380FD /* SpotifyiOS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2FD4B58624BF99B4005380FD /* SpotifyiOS.framework */; };
 		2FDEA92224DB6DDA00792EC7 /* SongViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2FDEA92124DB6DDA00792EC7 /* SongViewController.m */; };
 		2FE1E9D024CBA0440082D96C /* EventViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2FE1E9CF24CBA0440082D96C /* EventViewController.m */; };
+		2FF86F9E24DDCD98009D6041 /* Utils.m in Sources */ = {isa = PBXBuildFile; fileRef = 2FF86F9D24DDCD98009D6041 /* Utils.m */; };
 		2FFA2C8D24C9EE30005D44F8 /* APIManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 2FFA2C8C24C9EE30005D44F8 /* APIManager.m */; };
 		8DB6F07DC8ECBC7693CE3B72 /* Pods_SpotifyParty_SpotifyPartyUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 567B0D2168D64C3E98082C56 /* Pods_SpotifyParty_SpotifyPartyUITests.framework */; };
 		C3BCBA01C3504C9E639C2087 /* Pods_SpotifyPartyTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9652393B4DE5B8328CED638B /* Pods_SpotifyPartyTests.framework */; };
@@ -122,6 +123,8 @@
 		2FDEA92124DB6DDA00792EC7 /* SongViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SongViewController.m; sourceTree = "<group>"; };
 		2FE1E9CE24CBA0430082D96C /* EventViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = EventViewController.h; sourceTree = "<group>"; };
 		2FE1E9CF24CBA0440082D96C /* EventViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = EventViewController.m; sourceTree = "<group>"; };
+		2FF86F9C24DDCD98009D6041 /* Utils.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Utils.h; sourceTree = "<group>"; };
+		2FF86F9D24DDCD98009D6041 /* Utils.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Utils.m; sourceTree = "<group>"; };
 		2FFA2C8B24C9EE30005D44F8 /* APIManager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = APIManager.h; sourceTree = "<group>"; };
 		2FFA2C8C24C9EE30005D44F8 /* APIManager.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = APIManager.m; sourceTree = "<group>"; };
 		3E5562773B6C0EFEE8FD6B16 /* Pods-SpotifyParty.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SpotifyParty.release.xcconfig"; path = "Target Support Files/Pods-SpotifyParty/Pods-SpotifyParty.release.xcconfig"; sourceTree = "<group>"; };
@@ -186,6 +189,8 @@
 				2F7F77C324CFA95E002C64F8 /* Song.m */,
 				2F4611C424D223E000B5B542 /* AddedSongs.h */,
 				2F4611C524D223E000B5B542 /* AddedSongs.m */,
+				2FF86F9C24DDCD98009D6041 /* Utils.h */,
+				2FF86F9D24DDCD98009D6041 /* Utils.m */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -580,6 +585,7 @@
 				2FDEA92224DB6DDA00792EC7 /* SongViewController.m in Sources */,
 				2F1015F324C6072B00F1C78F /* NewEventViewController.m in Sources */,
 				2F09814F24D892B700B442FC /* EventQueue.m in Sources */,
+				2FF86F9E24DDCD98009D6041 /* Utils.m in Sources */,
 				2F52815C24BE2C4D00A52A95 /* AppDelegate.m in Sources */,
 				2F65469924D73DC6007A6B2D /* EventHostViewController.m in Sources */,
 				2F6C8FAF24CA4B9E004D5932 /* Playlist.m in Sources */,
