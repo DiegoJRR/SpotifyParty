@@ -12,18 +12,21 @@
 
 - (void)awakeFromNib {
     [super awakeFromNib];
-    // Initialization code
+
 }
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {
     [super setSelected:selected animated:animated];
-
-    // Configure the view for the selected state
 }
 
 - (IBAction)likeTapped:(id)sender {
     // TODO: Check if the song is already liked
     if (YES) {
+        
+        [UIView animateWithDuration:0.3 animations:^{
+            self.likeButton.imageView.transform = CGAffineTransformScale(CGAffineTransformIdentity, 0.4, 0.4);
+        }];
+        
         EventQueue *newLike = [[EventQueue alloc] initLike:self.songURI inEvent:self.event];
         
         [newLike saveInBackgroundWithBlock:^(BOOL succeeded, NSError * _Nullable error) {
@@ -31,10 +34,12 @@
                 NSLog(@"Error: %@", error.localizedDescription);
             } else {
                 NSLog(@"Posted succesfully. Waiting for host");
-                // Set local variable to liked
-                [self.likeButton.imageView setImage:[UIImage imageNamed:@"heart-fill"]];
+                [UIView animateWithDuration:0.2 animations:^{
+                    [self.likeButton.imageView setImage:[UIImage systemImageNamed:@"heart.fill"]];
+                }];
             }
         }];
+                
     } else {
         
     }

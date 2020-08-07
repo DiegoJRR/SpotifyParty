@@ -28,6 +28,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
+    
     self.events = [[NSMutableArray alloc] init];
     
     // Set self as dataSource and delegate for the tableView
@@ -42,6 +43,10 @@
         selector:@selector(checkForEvent:)
         name:UIApplicationWillEnterForegroundNotification
         object:nil];
+}
+
+- (void) viewDidAppear:(BOOL)animated {
+    self.navigationController.navigationBar.subviews.firstObject.alpha = 0.7;
 }
 
 - (void) checkForEvent:(NSNotification *)notification {

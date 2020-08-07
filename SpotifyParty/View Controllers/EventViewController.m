@@ -26,6 +26,8 @@
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 @property (strong, nonatomic) APIManager *apiManager;
 @property (weak, nonatomic) IBOutlet UITextField *songsURLField;
+@property (weak, nonatomic) IBOutlet UIButton *addSongButton;
+@property (weak, nonatomic) IBOutlet UIButton *startNewSongButton;
 
 @end
 
@@ -43,7 +45,6 @@
     // Set poster to nil to remove the old one (when refreshing) and query for the new one
     self.posterImageView.image = nil;
     [self.posterImageView setImageWithURL:[NSURL URLWithString: self.event.playlist.imageURLString]];
-    self.posterImageView.layer.cornerRadius = 10;
     
     self.eventNameLabel.text = self.event.eventName;
     
@@ -53,7 +54,8 @@
 }
 
 - (void) viewDidAppear:(BOOL)animated {
-    self.navigationController.navigationBar.subviews.firstObject.alpha = 1;
+    self.navigationController.navigationBar.subviews.firstObject.alpha = 0.6;
+
 }
 
 - (void) fetchSongs {
@@ -94,7 +96,14 @@
 }
 
 - (IBAction)addSongTapped:(id)sender {
-    
+    [UIView animateWithDuration:0.1 animations:^{
+        self.startNewSongButton.alpha = 0;
+        self.songsURLField.alpha = 1;
+        self.addSongButton.alpha = 1;
+    }];
+}
+
+- (IBAction)addSongAction:(id)sender {
     if(self.songsURLField.hasText) {
         NSArray *urlComponents = [self.songsURLField.text componentsSeparatedByString:@"/"];
         NSString *path = urlComponents[4];
@@ -113,6 +122,12 @@
                 [addSong saveInBackgroundWithBlock:^(BOOL succeeded, NSError * _Nullable error) {
                     if (succeeded) {
                         self.songsURLField.text = @"";
+                        
+                        [UIView animateWithDuration:0.3 animations:^{
+                            self.startNewSongButton.alpha = 1;
+                            self.songsURLField.alpha = 0;
+                            self.addSongButton.alpha = 0;
+                        }];
                     } else {
                         NSLog(@"%@", error.localizedDescription);
                     }
@@ -123,6 +138,7 @@
         [self.view endEditing:YES];
     }
 }
+
 
 - (IBAction)pushChanges:(id)sender {
     PFQuery *query = [PFQuery queryWithClassName:@"AddedSongs"];
@@ -177,6 +193,7 @@
     cell.songURI = song.spotifyID;
     
     [cell.albumImage setImageWithURL:[NSURL URLWithString: song.imageURL]];
+    cell.albumImage.layer.cornerRadius = 5;
     
     return cell;
 }
