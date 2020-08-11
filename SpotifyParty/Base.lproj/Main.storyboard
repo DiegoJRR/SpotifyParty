@@ -18,7 +18,9 @@
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="OeK-7m-WeU">
                                 <rect key="frame" x="188" y="422" width="38" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Login"/>
+                                <state key="normal" title="Login">
+                                    <color key="titleColor" systemColor="systemBlueColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                </state>
                                 <connections>
                                     <action selector="loginActionPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="wpg-RL-CU0"/>
                                 </connections>
@@ -35,7 +37,7 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" fixedFrame="YES" image="s.square.fill" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="aX5-mQ-80f">
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" fixedFrame="YES" image="Icon-1024" translatesAutoresizingMaskIntoConstraints="NO" id="aX5-mQ-80f">
                                 <rect key="frame" x="144" y="150" width="127" height="122"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
@@ -56,7 +58,9 @@
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="CC0-Ky-D4u">
                                 <rect key="frame" x="115" y="495" width="50" height="26"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="sign up"/>
+                                <state key="normal" title="sign up">
+                                    <color key="titleColor" systemColor="systemBlueColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                </state>
                                 <connections>
                                     <action selector="signUpPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="xTY-Pa-GBi"/>
                                 </connections>
@@ -443,11 +447,11 @@
                                                     </constraints>
                                                 </imageView>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Event Name" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="o3k-Ec-YTd" customClass="MarqueeLabel" customModule="MarqueeLabel">
-                                                    <rect key="frame" x="20" y="293" width="110" height="24"/>
+                                                    <rect key="frame" x="20" y="293" width="125.5" height="24"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="24" id="uXI-U3-RzG"/>
                                                     </constraints>
-                                                    <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="20"/>
+                                                    <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="23"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
@@ -712,6 +716,9 @@
                                 <state key="normal" image="heart" catalog="system">
                                     <preferredSymbolConfiguration key="preferredSymbolConfiguration" configurationType="pointSize" pointSize="28" scale="large" weight="regular"/>
                                 </state>
+                                <connections>
+                                    <action selector="likeTapped:" destination="wde-J2-amA" eventType="touchUpInside" id="ANF-eD-GO7"/>
+                                </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
@@ -736,6 +743,7 @@
                     <connections>
                         <outlet property="albumImageView" destination="5sD-7q-W3H" id="dbN-YG-ZoH"/>
                         <outlet property="authorNameLabel" destination="8Xi-Je-uUi" id="Vzh-Sz-VCN"/>
+                        <outlet property="likeButton" destination="aU3-cD-Zsn" id="kl0-d1-OM2"/>
                         <outlet property="songTitleLabel" destination="HP4-f8-aeP" id="D9k-Tb-7mJ"/>
                     </connections>
                 </viewController>
@@ -999,6 +1007,7 @@
         <segue reference="o4G-s3-7LV"/>
     </inferredMetricsTieBreakers>
     <resources>
+        <image name="Icon-1024" width="1024" height="1024"/>
         <image name="arrow.2.circlepath.circle" catalog="system" width="128" height="121"/>
         <image name="heart" catalog="system" width="128" height="109"/>
         <image name="location" catalog="system" width="128" height="115"/>
@@ -1008,7 +1017,6 @@
         <image name="person.circle" catalog="system" width="128" height="121"/>
         <image name="plus.circle" catalog="system" width="128" height="121"/>
         <image name="qrcode.viewfinder" catalog="system" width="128" height="114"/>
-        <image name="s.square.fill" catalog="system" width="128" height="114"/>
         <image name="square.and.arrow.up.on.square" catalog="system" width="117" height="128"/>
     </resources>
 </document>

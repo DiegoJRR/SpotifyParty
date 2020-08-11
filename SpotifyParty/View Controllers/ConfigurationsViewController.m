@@ -67,6 +67,8 @@
     PFUser.currentUser[@"userimage"] = [Utils getPFFileFromImage: self.profileImage.image];
     [PFUser.currentUser saveInBackground];
     
+    self.profileImage.layer.cornerRadius = 50;
+    
     // Dismiss UIImagePickerController to go back to your original view controller
     [self dismissViewControllerAnimated:YES completion:nil];
 }
