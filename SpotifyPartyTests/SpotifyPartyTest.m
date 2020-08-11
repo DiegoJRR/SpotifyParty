@@ -1,18 +1,18 @@
 //
-//  SpotifyPartyTests.m
+//  SpotifyPartyTest.m
 //  SpotifyPartyTests
 //
-//  Created by Diego de Jesus Ramirez on 13/07/20.
+//  Created by Diego de Jesus Ramirez on 10/08/20.
 //  Copyright © 2020 DiegoRamirez. All rights reserved.
 //
 
 #import <XCTest/XCTest.h>
 
-@interface SpotifyPartyTests : XCTestCase
+@interface SpotifyPartyTest : XCTestCase
 
 @end
 
-@implementation SpotifyPartyTests
+@implementation SpotifyPartyTest
 
 - (void)setUp {
     // Put setup code here. This method is called before the invocation of each test method in the class.

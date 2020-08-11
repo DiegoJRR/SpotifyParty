@@ -231,6 +231,7 @@
     cell.authorName.text = song.authorName;
     
     [cell.albumImage setImageWithURL:[NSURL URLWithString: song.imageURL]];
+    cell.albumImage.layer.cornerRadius = 5;
     
     return cell;
 }

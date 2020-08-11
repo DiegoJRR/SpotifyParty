@@ -17,7 +17,6 @@ NS_ASSUME_NONNULL_BEGIN
 @property (weak, nonatomic) IBOutlet UILabel *explicitSongs;
 @property (weak, nonatomic) IBOutlet UIImageView *playlistImage;
 
-
 @end
 
 NS_ASSUME_NONNULL_END

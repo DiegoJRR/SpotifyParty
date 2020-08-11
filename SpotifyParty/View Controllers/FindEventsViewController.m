@@ -20,6 +20,7 @@
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 @property (nonatomic, strong) NSMutableArray *events;
 @property (strong, nonatomic) AppDelegate *delegate;
+@property (nonatomic, strong) UIRefreshControl *refreshControl;
 
 @end
 
@@ -43,6 +44,11 @@
         selector:@selector(checkForEvent:)
         name:UIApplicationWillEnterForegroundNotification
         object:nil];
+    
+    //will refresh the table view
+       self.refreshControl = [[UIRefreshControl alloc] init];
+       [self.refreshControl addTarget:self action:@selector(fetchEvents) forControlEvents:UIControlEventValueChanged];
+       [self.tableView insertSubview:self.refreshControl atIndex:0];
 }
 
 - (void) viewDidAppear:(BOOL)animated {
@@ -62,6 +68,7 @@
 -(void)fetchEvents{
     // construct query
     PFQuery *query = [PFQuery queryWithClassName:@"Event"];
+    [query orderByDescending:@"createdAt"];
     [query includeKey:@"author"];
     [query includeKey:@"playlist"];
     
@@ -69,14 +76,14 @@
     [query findObjectsInBackgroundWithBlock:^(NSArray *events, NSError *error) {
         if (events != nil && !error) {
             // Reverse the posts to show the most recent ones first
-            events = [[events reverseObjectEnumerator] allObjects];
+//            events = [[events reverseObjectEnumerator] allObjects];
             
             self.events = [NSMutableArray arrayWithArray:events];
             [self.tableView  reloadData];
+            [self.refreshControl endRefreshing];
         } else {
             NSLog(@"%@", error.localizedDescription);
         }
-        
     }];
 }
 

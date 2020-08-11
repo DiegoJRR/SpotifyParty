@@ -37,7 +37,6 @@
 		2F52816724BE2C4E00A52A95 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2F52816624BE2C4E00A52A95 /* Assets.xcassets */; };
 		2F52816A24BE2C4E00A52A95 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2F52816824BE2C4E00A52A95 /* LaunchScreen.storyboard */; };
 		2F52816D24BE2C4E00A52A95 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F52816C24BE2C4E00A52A95 /* main.m */; };
-		2F52817724BE2C4F00A52A95 /* SpotifyPartyTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F52817624BE2C4F00A52A95 /* SpotifyPartyTests.m */; };
 		2F52818224BE2C4F00A52A95 /* SpotifyPartyUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F52818124BE2C4F00A52A95 /* SpotifyPartyUITests.m */; };
 		2F65469924D73DC6007A6B2D /* EventHostViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F65469824D73DC6007A6B2D /* EventHostViewController.m */; };
 		2F6C8FAF24CA4B9E004D5932 /* Playlist.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F6C8FAE24CA4B9E004D5932 /* Playlist.m */; };
@@ -47,6 +46,7 @@
 		2FD4B58724BF99B4005380FD /* SpotifyiOS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2FD4B58624BF99B4005380FD /* SpotifyiOS.framework */; };
 		2FDEA92224DB6DDA00792EC7 /* SongViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2FDEA92124DB6DDA00792EC7 /* SongViewController.m */; };
 		2FE1E9D024CBA0440082D96C /* EventViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2FE1E9CF24CBA0440082D96C /* EventViewController.m */; };
+		2FF79F0924E2070D00370902 /* SpotifyPartyTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 2FF79F0824E2070D00370902 /* SpotifyPartyTest.m */; };
 		2FF86F9E24DDCD98009D6041 /* Utils.m in Sources */ = {isa = PBXBuildFile; fileRef = 2FF86F9D24DDCD98009D6041 /* Utils.m */; };
 		2FFA2C8D24C9EE30005D44F8 /* APIManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 2FFA2C8C24C9EE30005D44F8 /* APIManager.m */; };
 		8DB6F07DC8ECBC7693CE3B72 /* Pods_SpotifyParty_SpotifyPartyUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 567B0D2168D64C3E98082C56 /* Pods_SpotifyParty_SpotifyPartyUITests.framework */; };
@@ -102,7 +102,6 @@
 		2F52816B24BE2C4E00A52A95 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		2F52816C24BE2C4E00A52A95 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		2F52817224BE2C4F00A52A95 /* SpotifyPartyTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SpotifyPartyTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		2F52817624BE2C4F00A52A95 /* SpotifyPartyTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SpotifyPartyTests.m; sourceTree = "<group>"; };
 		2F52817824BE2C4F00A52A95 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		2F52817D24BE2C4F00A52A95 /* SpotifyPartyUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SpotifyPartyUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		2F52818124BE2C4F00A52A95 /* SpotifyPartyUITests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SpotifyPartyUITests.m; sourceTree = "<group>"; };
@@ -123,6 +122,7 @@
 		2FDEA92124DB6DDA00792EC7 /* SongViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SongViewController.m; sourceTree = "<group>"; };
 		2FE1E9CE24CBA0430082D96C /* EventViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = EventViewController.h; sourceTree = "<group>"; };
 		2FE1E9CF24CBA0440082D96C /* EventViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = EventViewController.m; sourceTree = "<group>"; };
+		2FF79F0824E2070D00370902 /* SpotifyPartyTest.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SpotifyPartyTest.m; sourceTree = "<group>"; };
 		2FF86F9C24DDCD98009D6041 /* Utils.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Utils.h; sourceTree = "<group>"; };
 		2FF86F9D24DDCD98009D6041 /* Utils.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Utils.m; sourceTree = "<group>"; };
 		2FFA2C8B24C9EE30005D44F8 /* APIManager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = APIManager.h; sourceTree = "<group>"; };
@@ -275,8 +275,8 @@
 		2F52817524BE2C4F00A52A95 /* SpotifyPartyTests */ = {
 			isa = PBXGroup;
 			children = (
-				2F52817624BE2C4F00A52A95 /* SpotifyPartyTests.m */,
 				2F52817824BE2C4F00A52A95 /* Info.plist */,
+				2FF79F0824E2070D00370902 /* SpotifyPartyTest.m */,
 			);
 			path = SpotifyPartyTests;
 			sourceTree = "<group>";
@@ -601,7 +601,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				2F52817724BE2C4F00A52A95 /* SpotifyPartyTests.m in Sources */,
+				2FF79F0924E2070D00370902 /* SpotifyPartyTest.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -807,6 +807,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.diegojrr.SpotifyParty;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "";
 			};
 			name = Debug;
 		};
@@ -859,6 +860,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.diegojrr.SpotifyParty;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "";
 			};
 			name = Release;
 		};
@@ -879,7 +881,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.diegojrr.SpotifyPartyTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/SpotifyParty.app/SpotifyParty";
+				TEST_HOST = "build/Debug-iphoneos/SpotifyParty.app/SpotifyParty";
 			};
 			name = Debug;
 		};
@@ -900,7 +902,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.diegojrr.SpotifyPartyTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/SpotifyParty.app/SpotifyParty";
+				TEST_HOST = "build/Release-iphoneos/SpotifyParty.app/SpotifyParty";
 			};
 			name = Release;
 		};

@@ -23,11 +23,11 @@
     // TODO: Check if the song is already liked
     if (YES) {
         
-        [UIView animateWithDuration:0.3 animations:^{
+        [UIView animateWithDuration:0.2 animations:^{
             self.likeButton.imageView.transform = CGAffineTransformScale(CGAffineTransformIdentity, 0.4, 0.4);
         }];
         
-        [UIView animateWithDuration:0.3 animations:^{
+        [UIView animateWithDuration:0.2 animations:^{
             self.likeButton.imageView.transform = CGAffineTransformScale(CGAffineTransformIdentity, 5/2, 5/2);
         }];
         
@@ -39,7 +39,7 @@
             } else {
                 NSLog(@"Posted succesfully. Waiting for host");
                 [UIView animateWithDuration:0.2 animations:^{
-                    [self.likeButton.imageView setImage:[UIImage systemImageNamed:@"heart.fill"]];
+                    [self.likeButton setImage:[UIImage systemImageNamed:@"heart.fill"] forState:UIControlStateNormal];
                 }];
             }
         }];
