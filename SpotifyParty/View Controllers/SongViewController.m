@@ -17,7 +17,6 @@
 @property (weak, nonatomic) IBOutlet UILabel *songTitleLabel;
 @property (weak, nonatomic) IBOutlet UILabel *authorNameLabel;
 @property (weak, nonatomic) IBOutlet UIButton *likeButton;
-
 @property (nonatomic, strong) APIManager *apiManager;
 
 @end
@@ -44,7 +43,6 @@
 #pragma mark - Navigation
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    
     // Return the navigation controller to a solid color 
     self.navigationController.navigationBar.subviews.firstObject.alpha = 1;
 
